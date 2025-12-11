@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - African Kings Suppliers Ltd</title>
+  <style>
+    /* Reset and base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    body { line-height: 1.6; color: #333; background-color: #f8f9fa; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+    /* Header styles */
+    header { background-color: #aaca7d; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .header-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-img { width: 60px; height: 60px; object-fit: contain; padding: 5px; border-radius: 5px; }
+    .logo-text { font-size: 1.8rem; font-weight: bold; }
+    .logo-text span { color: #aaca7d; }
+
+    /* Navigation */
+    nav ul { display: flex; list-style: none; flex-wrap: wrap; }
+    nav ul li { margin-left: 1.5rem; }
+    nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    nav ul li a:hover { color: #e9d99b; }
+
+    /* Hamburger */
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .menu-toggle span { width: 25px; height: 3px; background: white; border-radius: 3px; transition: all 0.3s ease; }
+    nav { position: relative; }
+    nav ul.mobile-hidden { display: none; flex-direction: column; background: #aaca7d; width: 100%; padding: 1rem 0; position: absolute; top: 100%; left: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+    nav ul.mobile-hidden li { margin: 10px 0; text-align: center; }
+
+    /* About Hero Section */
+    .about-hero { 
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/Modular\ Operation\ Theatre.jpeg');
+      color: white; 
+      text-align: center; 
+      padding: 4rem 1rem; 
+      position: relative; 
+      overflow: hidden; 
+    }
+    .about-hero-content { max-width: 800px; margin: 0 auto; }
+    .about-hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+    .about-hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+
+    /* About Content Section */
+    .about-content { padding: 4rem 1rem; background: #fff; }
+    .about-grid { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 3rem; 
+      align-items: center;
+    }
+    .about-text h2 { color: #aaca7d; margin-bottom: 1.5rem; font-size: 2.2rem; }
+    .about-text p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+    .about-image img { 
+      width: 100%; 
+      border-radius: 10px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Mission & Vision Section */
+    .mission-vision { padding: 4rem 1rem; background: #f8f9fa; }
+    .mission-vision h2 { text-align: center; margin-bottom: 3rem; color: #aaca7d; }
+    .mv-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 2rem; 
+    }
+    .mv-card { 
+      background: white; 
+      padding: 2rem; 
+      border-radius: 10px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .mv-card:hover { transform: translateY(-5px); }
+    .mv-icon { 
+      font-size: 3rem; 
+      margin-bottom: 1.5rem; 
+      color: #aaca7d;
+    }
+    .mv-card h3 { color: #aaca7d; margin-bottom: 1rem; }
+    .mv-card p { color: #666; }
+
+    /* Values Section */
+    .values { padding: 4rem 1rem; background: #fff; }
+    .values h2 { text-align: center; margin-bottom: 3rem; color: #aaca7d; }
+    .values-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 2rem; 
+    }
+    .value-card { 
+      background: #f8f9fa; 
+      padding: 2rem; 
+      border-radius: 10px; 
+      text-align: center;
+      border-left: 4px solid #e9d99b;
+    }
+    .value-card h3 { color: #aaca7d; margin-bottom: 1rem; }
+    .value-card p { color: #666; }
+
+    /* Team Section */
+    .team { padding: 4rem 1rem; background: #f8f9fa; }
+    .team h2 { text-align: center; margin-bottom: 3rem; color: #aaca7d; }
+    .team-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 2rem; 
+    }
+    .team-member { 
+      background: white; 
+      padding: 2rem; 
+      border-radius: 10px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .member-image { 
+      width: 150px; 
+      height: 150px; 
+      border-radius: 50%; 
+      margin: 0 auto 1.5rem; 
+      overflow: hidden;
+      border: 3px solid #e9d99b;
+    }
+    .member-image img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+    .team-member h3 { color: #aaca7d; margin-bottom: 0.5rem; }
+    .team-member .position { color: #e9d99b; font-weight: bold; margin-bottom: 1rem; }
+    .team-member p { color: #666; }
+
+    /* CTA Section */
+    .about-cta { 
+      background: linear-gradient(135deg, #aaca7d, #aaca7d);
+      color: white; 
+      text-align: center; 
+      padding: 4rem 1rem; 
+    }
+    .about-cta h2 { margin-bottom: 1.5rem; }
+    .about-cta p { margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-btn { 
+      display: inline-block; 
+      background-color: #e9d99b; 
+      color: #aaca7d; 
+      padding: 0.9rem 1.8rem; 
+      text-decoration: none; 
+      border-radius: 6px; 
+      font-weight: bold; 
+      transition: background-color 0.3s, transform 0.3s; 
+      margin: 0 10px; 
+    }
+    .cta-btn:hover { background-color: #e9d99b; transform: scale(1.05); }
+
+    /* Footer */
+    footer { background-color: #aaca7d; color: white; padding: 2rem 0; text-align: center; }
+    .footer-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .footer-logo-img { width: 50px; height: 50px; object-fit: contain; margin-right: 15px; background-color: white; padding: 3px; border-radius: 5px; }
+    .footer-logo-text { font-size: 1.5rem; font-weight: bold; }
+    .footer-logo-text span { color: green; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
+    .footer-section { flex: 1; min-width: 250px; }
+    .footer-section h3 { margin-bottom: 1rem; color: #e9d99b; }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 0.5rem; }
+    .footer-section a { color: white; text-decoration: none; }
+    .footer-section a:hover { color: #e9d99b; }
+    .social-icons { display: flex; gap: 15px; justify-content: center; margin-top: 1rem; }
+    .social-icons a { color: white; font-size: 1.4rem; transition: color 0.3s; }
+    .social-icons a:hover { color: #e9d99b; }
+    .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; font-size: 0.9rem; }
+
+    /* WhatsApp Button */
+    .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; border-radius: 50%; text-align: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; background-color: #25d366; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav ul { display: none; }
+      nav ul.active { display: flex; }
+      nav ul { flex-direction: column; width: 100%; background: #1a5276; padding: 1rem 0; }
+      nav ul li { margin: 10px 0; text-align: center; }
+      .about-hero h1 { font-size: 2.2rem; }
+      .about-hero p { font-size: 1rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .mv-grid, .values-grid, .team-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .about-hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo-container">
+        <img src="/images/ChatGPT Image Nov 10, 2025, 07_36_46 AM.png" alt="African Kings Logo" class="logo-img">
+        <div class="logo-text">African <span>Kings</span> Suppliers</div>
+      </div>
+      <nav>
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="container about-hero-content">
+      <h1>About African Kings Suppliers</h1>
+      <p>Your Trusted Partner in Medical Supplies and Equipment Solutions Across East Africa</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-content">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>At African Kings Suppliers Ltd, we are driven by a single mission: to make world-class healthcare solutions accessible across East Africa. Founded with a vision to transform the way healthcare facilities access essential equipment and supplies, we have grown into a trusted partner for hospitals, clinics, laboratories, and institutions across Kenya and beyond.
+
+<p>With over a decade of experience, we bring deep industry knowledge and an unwavering commitment to quality. Our portfolio includes a wide range of medical and laboratory equipment, reagents, and consumables, all sourced from reputable global manufacturers and delivered with precision.</p>
+
+<p>What sets us apart is more than just our products—it’s our commitment to excellence, reliability, and customer satisfaction. We understand that in healthcare, every decision matters. That’s why we provide solutions that meet international standards, ensuring healthcare providers have the tools they need to save lives and deliver exceptional care.</p>
+
+<p>Today, African Kings Suppliers Ltd stands as a leader in healthcare supply, trusted for our integrity, professionalism, and ability to deliver on our promises. Together with our clients, we are shaping a healthier future for East Africa.</p>
+        </div>
+        <div class="about-image">
+          <img src="/images/ICU Equipment _ ICU Equipment Suppliers in UAE _ Dubai.jpeg" alt="Medical Equipment">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mission-vision">
+    <div class="container">
+      <h2>Our Mission & Vision</h2>
+      <div class="mv-grid">
+        <div class="mv-card">
+          <div class="mv-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To provide healthcare institutions across East Africa with reliable, high-quality medical equipment and supplies that enhance patient care, improve diagnostic capabilities, and support medical professionals in delivering exceptional healthcare services.</p>
+        </div>
+        <div class="mv-card">
+          <div class="mv-icon">🔭</div>
+          <h3>Our Vision</h3>
+          <p>To be the leading medical supplies partner in East Africa, recognized for our commitment to quality, innovation, and customer satisfaction, while contributing to the advancement of healthcare standards across the region.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values">
+    <div class="container">
+      <h2>Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>Quality</h3>
+          <p>We source only the highest quality medical equipment and supplies from reputable manufacturers worldwide.</p>
+        </div>
+        <div class="value-card">
+          <h3>Reliability</h3>
+          <p>Our customers trust us to deliver on our promises with consistent, dependable service and support.</p>
+        </div>
+        <div class="value-card">
+          <h3>Innovation</h3>
+          <p>We stay at the forefront of medical technology to bring the latest advancements to our clients.</p>
+        </div>
+        <div class="value-card">
+          <h3>Partnership</h3>
+          <p>We build long-term relationships with our clients, understanding their unique needs and challenges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team">
+    <div class="container">
+      <h2>Meet Our Leadership Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <h3>David Mwangi</h3>
+          <div class="position">Chief Executive Officer</div>
+          <p>With over 15 years in the medical equipment industry, David leads our strategic direction and growth initiatives.</p>
+        </div>
+        <div class="team-member">
+          <h3>Sarah Kamau</h3>
+          <div class="position">Operations Director</div>
+          <p>Sarah ensures our operations run smoothly and efficiently, managing logistics and customer service excellence.</p>
+        </div>
+        <div class="team-member">
+          <h3>Dr. James Ochieng</h3>
+          <div class="position">Technical Director</div>
+          <p>Dr. James brings medical expertise to ensure our products meet the highest clinical standards and requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="about-cta">
+    <div class="container">
+      <h2>Ready to Partner With Us?</h2>
+      <p>Join hundreds of healthcare institutions across East Africa who trust African Kings Suppliers for their medical equipment needs.</p>
+      <a href="contact.html" class="cta-btn">Contact Us Today</a>
+      <a href="products.html" class="cta-btn">View Our Products</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <img src="/images/Afs logo.PNG" alt="African Kings Logo" class="footer-logo-img">
+        <div class="footer-logo-text">African <span>Kings</span> Suppliers</div>
+      </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <ul>
+            <li>Theatre Equipment</li>
+            <li>Maternity and Baby Care</li>
+            <li>Dental Equipment</li>
+            <li>Radiology Equipment</li>
+            <li>Laboratory Equipment</li>
+            <li>ICU Equipment</li>
+            <li>Hospital Furniture</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>Phone: +254 110 090 572</p>
+          <p>Email: info@africankings.co.ke</p>
+          <p>Nairobi, Kenya</p>
+        </div>
+      </div>
+      <div class="social-icons">
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="LinkedIn">💼</a>
+        <a href="#" title="Instagram">📸</a>
+      </div>
+      <div class="copyright"><p>&copy; 2024 African Kings Suppliers Ltd. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/254110090572" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 .396c-8.84 0-16 7.16-16 16 ..."/></svg>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('active');
+    });
+    
+  // Simple navigation fix
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+      });
+    }
+    
+    // Close mobile menu when clicking a link
+    const navItems = document.querySelectorAll('#nav-links a');
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+      });
+    });
+  });
+  </script>
+</body>
+</html>

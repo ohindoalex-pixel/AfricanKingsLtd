@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radiology Equipment - African Kings Suppliers Ltd</title>
+  <style>
+    /* Reset and base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    body { line-height: 1.6; color: #333; background-color: #f8f9fa; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+    /* Header styles */
+    header { background-color: #1a5276; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .header-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-img { width: 60px; height: 60px; object-fit: contain; background-color: white; padding: 5px; border-radius: 5px; }
+    .logo-text { font-size: 1.8rem; font-weight: bold; }
+    .logo-text span { color: #f1c40f; }
+
+    /* Navigation */
+    nav ul { display: flex; list-style: none; flex-wrap: wrap; }
+    nav ul li { margin-left: 1.5rem; }
+    nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    nav ul li a:hover { color: #f1c40f; }
+
+    /* Hamburger */
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .menu-toggle span { width: 25px; height: 3px; background: white; border-radius: 3px; transition: all 0.3s ease; }
+    nav { position: relative; }
+    nav ul.mobile-hidden { display: none; flex-direction: column; background: #1a5276; width: 100%; padding: 1rem 0; position: absolute; top: 100%; left: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+    nav ul.mobile-hidden li { margin: 10px 0; text-align: center; }
+
+    /* Page Header */
+    .page-header { background: linear-gradient(135deg, #1a5276 0%, #2471a3 100%); color: white; padding: 4rem 1rem; text-align: center; }
+    .page-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .page-header p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+    /* Breadcrumb */
+    .breadcrumb { padding: 1rem 0; background: #e9ecef; }
+    .breadcrumb ul { display: flex; list-style: none; }
+    .breadcrumb li { margin-right: 0.5rem; }
+    .breadcrumb li:after { content: ">"; margin-left: 0.5rem; color: #6c757d; }
+    .breadcrumb li:last-child:after { content: ""; }
+    .breadcrumb a { color: #1a5276; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Category Description */
+    .category-description { padding: 3rem 0; background: white; }
+    .category-description .container { display: flex; align-items: center; gap: 3rem; }
+    .category-text { flex: 1; }
+    .category-image { flex: 1; }
+    .category-image img { width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .category-description h2 { color: #1a5276; margin-bottom: 1.5rem; font-size: 2rem; }
+    .category-description p { margin-bottom: 1.5rem; font-size: 1.1rem; color: #555; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .feature { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f1c40f; }
+    .feature h4 { color: #1a5276; margin-bottom: 0.5rem; }
+
+    /* Products Section */
+    .products { padding: 3rem 0; background: #f8f9fa; }
+    .products h2 { text-align: center; margin-bottom: 2rem; color: #1a5276; font-size: 2.2rem; }
+    .product-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+      gap: 25px; 
+      justify-items: center;
+    }
+    .product { 
+      background: white; 
+      padding: 1.5rem; 
+      border-radius: 8px; 
+      text-align: center; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+      max-width: 300px;
+    }
+    .product img { 
+      width: 100%; 
+      height: 200px; 
+      object-fit: contain; 
+      margin-bottom: 1rem; 
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .product h4 { 
+      margin-bottom: 1rem; 
+      color: #1a5276;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Related Categories */
+    .related-categories { padding: 3rem 0; background: white; }
+    .related-categories h2 { text-align: center; margin-bottom: 2rem; color: #1a5276; }
+    .categories-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+      gap: 20px; 
+    }
+    .related-category { 
+      background: #f8f9fa; 
+      padding: 1.5rem; 
+      border-radius: 8px; 
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .related-category:hover { 
+      transform: translateY(-3px); 
+    }
+    .related-category h3 { color: #1a5276; margin-bottom: 1rem; }
+    .related-category a { 
+      display: inline-block; 
+      padding: 8px 16px; 
+      background: #f1c40f; 
+      color: #1a5276; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      font-weight: bold; 
+      transition: background 0.3s;
+    }
+    .related-category a:hover { background: #f39c12; }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #1a5276 0%, #2471a3 100%);
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-section p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #f1c40f;
+      color: #1a5276;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta-btn:hover {
+      background: #f39c12;
+      transform: translateY(-3px);
+    }
+    .cta-btn.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .cta-btn.secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Footer */
+    footer { background-color: #1a5276; color: white; padding: 2rem 0; text-align: center; }
+    .footer-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .footer-logo-img { width: 50px; height: 50px; object-fit: contain; margin-right: 15px; background-color: white; padding: 3px; border-radius: 5px; }
+    .footer-logo-text { font-size: 1.5rem; font-weight: bold; }
+    .footer-logo-text span { color: #f1c40f; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
+    .footer-section { flex: 1; min-width: 250px; }
+    .footer-section h3 { margin-bottom: 1rem; color: #f1c40f; }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 0.5rem; }
+    .footer-section a { color: white; text-decoration: none; }
+    .footer-section a:hover { color: #f1c40f; }
+    .social-icons { display: flex; gap: 15px; justify-content: center; margin-top: 1rem; }
+    .social-icons a { color: white; font-size: 1.4rem; transition: color 0.3s; }
+    .social-icons a:hover { color: #f1c40f; }
+    .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; font-size: 0.9rem; }
+
+    /* WhatsApp Button */
+    .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; border-radius: 50%; text-align: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; background-color: #25d366; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav ul { display: none; }
+      nav ul.active { display: flex; }
+      nav ul { flex-direction: column; width: 100%; background: #1a5276; padding: 1rem 0; }
+      nav ul li { margin: 10px 0; text-align: center; }
+      .page-header h1 { font-size: 2rem; }
+      .page-header p { font-size: 1rem; }
+      .category-description .container { flex-direction: column; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-btn { width: 100%; max-width: 300px; }
+    }
+    @media (max-width: 480px) {
+      .page-header h1 { font-size: 1.8rem; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo-container">
+        <img src="/images/Afs logo.PNG" alt="African Kings Logo" class="logo-img">
+        <div class="logo-text">African <span>Kings</span> Suppliers</div>
+      </div>
+      <nav>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Radiology Equipment</h1>
+      <p>High-precision instruments for accurate diagnostic testing and medical research</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><span>Radiology Equipment</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Category Description -->
+  <section class="category-description">
+    <div class="container">
+      <div class="category-text">
+        <h2>Advanced Radiology Solutions</h2>
+        <p>We provide state-of-the-art radiology equipment designed to meet the rigorous demands of modern medical diagnostics and research. Our comprehensive range includes MRI scans, mobile x-rays, ultrasound machines, and specialized instruments from leading global manufacturers.</p>
+        
+        <div class="features-grid">
+          <div class="feature">
+            <h4>Precision & Accuracy</h4>
+            <p>High-precision instruments for reliable diagnostic results</p>
+          </div>
+          <div class="feature">
+            <h4>Quality Assurance</h4>
+            <p>ISO-certified equipment with comprehensive calibration</p>
+          </div>
+          <div class="feature">
+            <h4>Technical Support</h4>
+            <p>Expert installation, training, and maintenance services</p>
+          </div>
+          <div class="feature">
+            <h4>Warranty & Service</h4>
+            <p>Comprehensive warranty and after-sales support</p>
+          </div>
+        </div>
+      </div>
+      <div class="category-image">
+        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Radiology Equipment">
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products">
+    <div class="container">
+      <h2>Radiology Equipment Products</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="/images/apex locator.PNG" alt="CT Scan">
+          <h4>CT Scan</h4>
+        </div>
+        <div class="product">
+          <img src="/images/Spincell 3.PNG" alt="X-Ray Machine">
+          <h4>X-Ray Machines</h4>
+        </div>
+        <div class="product">
+          <img src="/images/spincell 5 compact.PNG" alt="MRI Scan">
+          <h4>MRI Scan</h4>
+        </div>
+        <div class="product">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="X-Ray Film Printer">
+          <h4>X-Ray Film Printer</h4>
+        </div>
+        <div class="product">
+          <img src="/images/dental chair unit.PNG" alt="Ultrasound Machine">
+          <h4>Ultrasound Machine</h4>
+        </div>
+        <div class="product">
+          <img src="https://images.unsplash.com/photo-1589432178133-4b8b71fdcbb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Mobile X-Ray">
+          <h4>Mobile X-Ray</h4>
+        </div>
+         <div class="product">
+          <img src="/images/dental chair unit.PNG" alt="CR Scanner">
+          <h4>CR Scanner</h4>
+        </div>
+         <div class="product">
+          <img src="/images/dental chair unit.PNG" alt="Lead Apron">
+          <h4>Lead Apron</h4>
+        </div>
+         <div class="product">
+          <img src="/images/dental chair unit.PNG" alt="Lead Barrier">
+          <h4>Lead Barrier</h4>
+        </div>
+         <div class="product">
+          <img src="/images/dental chair unit.PNG" alt="X-Ray Warning Light">
+          <h4>X-Ray Warning Light</h4>
+        </div>
+         <div class="product">
+          <img src="/images/dental chair unit.PNG" alt="X-Ray Film Viewer">
+          <h4>X-Ray Film Viewer</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Categories -->
+  <section class="related-categories">
+    <div class="container">
+      <h2>Related Categories</h2>
+      <div class="categories-grid">
+        <div class="related-category">
+          <h3>Hospital Furniture</h3>
+          <p>Ergonomic furniture for healthcare facilities</p>
+          <a href="furniture.html">View Products</a>
+        </div>
+        <div class="related-category">
+          <h3>ICU Equipment</h3>
+          <p>Critical care monitoring and support systems</p>
+          <a href="icu.html">View Products</a>
+        </div>
+        <div class="related-category">
+          <h3>Laboratory Equipment</h3>
+          <p>Advanced medical laboratory products</p>
+          <a href="radiology.html">View Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Need Specific Radiology Equipment?</h2>
+      <p>Contact our radiology equipment specialists for personalized recommendations and quotes tailored to your facility's needs.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="cta-btn">Contact Our Experts</a>
+        <a href="/files/Advert African 2024.pdf" download class="cta-btn secondary">Download Catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <img src="/images/Afs logo.PNG" alt="African Kings Logo" class="footer-logo-img">
+        <div class="footer-logo-text">African <span>Kings</span> Suppliers</div>
+      </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <ul>
+            <li>Laboratory Equipment</li>
+            <li>Hospital Furniture</li>
+            <li>ICU Equipment</li>
+            <li>Radiology Equipment</li>
+            <li>Dental Equipment</li>
+            <li>Theatre Equipment</li>
+            <li>Maternity Care</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>Phone: +254 110 090 572</p>
+          <p>Email: info@africankings.co.ke</p>
+          <p>Nairobi, Kenya</p>
+        </div>
+      </div>
+      <div class="social-icons">
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="LinkedIn">💼</a>
+        <a href="#" title="Instagram">📸</a>
+      </div>
+      <div class="copyright"><p>&copy; 2024 African Kings Suppliers Ltd. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/254110090572" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 .396c-8.84 0-16 7.16-16 16 ..."/></svg>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    const navItems = document.querySelectorAll('#nav-links a');
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        document.getElementById('nav-links').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

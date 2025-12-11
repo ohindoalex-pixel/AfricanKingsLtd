@@ -1,0 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products - African Kings Suppliers Ltd</title>
+  <style>
+    /* Reset and base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    body { line-height: 1.6; color: #333; background-color: #f8f9fa; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+    /* Header styles */
+    header { background-color: #144d03; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
+    .header-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-img { width: 60px; height: 60px; object-fit: contain; padding: 5px; border-radius: 5px; }
+    .logo-text { font-size: 1.8rem; font-weight: bold; }
+    .logo-text span { color: orange; }
+
+    /* Navigation */
+    nav ul { display: flex; list-style: none; flex-wrap: wrap; }
+    nav ul li { margin-left: 1.5rem; }
+    nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; padding-bottom: 5px; }
+    nav ul li a:hover { color: orange; }
+    nav ul li a.active { color: orange; }
+    nav ul li a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #f1c40f; }
+
+    /* Hamburger */
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .menu-toggle span { width: 25px; height: 3px; background: white; border-radius: 3px; transition: all 0.3s ease; }
+    nav { position: relative; }
+
+    /* Page Header */
+    .page-header { background: linear-gradient(135deg, #144d03 0%, #144d03 100%); color: white; padding: 4rem 0; text-align: center; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>'); background-size: cover; }
+    .page-header h1 { font-size: 2.8rem; margin-bottom: 1rem; position: relative; }
+    .page-header p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; position: relative; }
+
+    /* Breadcrumb */
+    .breadcrumb { background: #e9ecef; padding: 1rem 0; margin-bottom: 2rem; }
+    .breadcrumb .container { display: flex; align-items: center; gap: 10px; }
+    .breadcrumb a { color: #1a5276; text-decoration: none; transition: color 0.3s; }
+    .breadcrumb a:hover { color: #144d03; text-decoration: underline; }
+    .breadcrumb span { color: #6c757d; }
+
+    /* Categories Grid */
+    .categories { padding: 4rem 1rem; background: #fff; }
+    .categories h2 { text-align: center; margin-bottom: 3rem; color: #144d03; font-size: 2.2rem; position: relative; }
+    .categories h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: #f1c40f; border-radius: 2px; }
+    .categories-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      gap: 30px; 
+      justify-items: center;
+    }
+    .category-card { 
+      background: white; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08); 
+      transition: all 0.4s ease;
+      width: 100%;
+      max-width: 380px;
+      cursor: pointer;
+      position: relative;
+    }
+    .category-card:hover { 
+      transform: translateY(-12px); 
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #144d03, orange);
+      z-index: 1;
+    }
+    .category-image { 
+      height: 220px; 
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .category-card:hover .category-image img {
+      transform: scale(1.1);
+    }
+    .category-content { padding: 1.8rem; }
+    .category-content h3 { color: #144d03; margin-bottom: 1rem; font-size: 1.4rem; }
+    .category-content p { color: #666; margin-bottom: 1.2rem; line-height: 1.7; }
+    .category-features { margin-bottom: 1.5rem; }
+    .category-features ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .category-features li { background: #e9f7fe; color: #144d03; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; }
+    .category-stats { display: flex; justify-content: space-between; color: #888; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .view-category-btn { 
+      display: inline-block; 
+      padding: 12px 24px; 
+      background: #144d03; 
+      color: #fff; 
+      text-decoration: none; 
+      border-radius: 6px; 
+      font-weight: bold; 
+      transition: all 0.3s; 
+      width: 100%;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .view-category-btn:hover { 
+      background: orange; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+    }
+
+    /* Products Section */
+    .products-section { padding: 4rem 1rem; background: #f8f9fa; display: none; }
+    .products-section.active { display: block; animation: fadeIn 0.5s ease; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 15px; }
+    .section-header h2 { color: #144d03; flex: 1; font-size: 2rem; position: relative; padding-bottom: 10px; }
+    .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: #f1c40f; }
+    .back-to-categories { 
+      background: #144d03; 
+      color: white; 
+      padding: 12px 24px; 
+      text-decoration: none; 
+      border-radius: 6px; 
+      font-weight: bold; 
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-to-categories:hover { 
+      background: orange; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(26, 82, 118, 0.3);
+    }
+
+    /* Products Grid */
+    .products-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+      gap: 30px; 
+      justify-items: center;
+    }
+    .product-card { 
+      background: white; 
+      padding: 1.8rem; 
+      border-radius: 10px; 
+      text-align: center; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #144d03, orange);
+    }
+    .product-image { 
+      width: 100%; 
+      height: 180px; 
+      object-fit: contain; 
+      margin-bottom: 1.2rem; 
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+    .product-card h4 { 
+      margin-bottom: 1rem; 
+      color: #144d03;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .view-product-btn { 
+      display: inline-block; 
+      padding: 10px 20px; 
+      background: #144d03; 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 6px; 
+      font-weight: bold; 
+      transition: all 0.3s;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+    .view-product-btn:hover { 
+      background: orange; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(26, 82, 118, 0.3);
+    }
+
+    /* Product Modal */
+    .modal { 
+      display: none; 
+      position: fixed; 
+      z-index: 2000; 
+      left: 0; 
+      top: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.85); 
+      animation: fadeIn 0.3s;
+    }
+    .modal-content { 
+      background-color: #fefefe; 
+      margin: 3% auto; 
+      padding: 30px; 
+      border-radius: 12px; 
+      width: 90%; 
+      max-width: 900px; 
+      position: relative;
+      animation: slideIn 0.4s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .close-modal { 
+      position: absolute; 
+      top: 20px; 
+      right: 25px; 
+      color: #aaa; 
+      font-size: 32px; 
+      font-weight: bold; 
+      cursor: pointer; 
+      transition: color 0.3s;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .close-modal:hover { 
+      color: #333; 
+      background: #f1f1f1;
+    }
+    .modal-body { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 30px; 
+      margin-top: 20px;
+    }
+    .modal-image { 
+      flex: 1; 
+      min-width: 350px; 
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-image img { 
+      max-width: 100%; 
+      max-height: 400px; 
+      object-fit: contain; 
+      background: white; 
+      padding: 15px; 
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .modal-details { 
+      flex: 1; 
+      min-width: 350px;
+    }
+    .modal-details h2 { 
+      color: #144d03; 
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    .modal-details .product-category { 
+      background: #e9ecef; 
+      padding: 6px 14px; 
+      border-radius: 20px; 
+      font-size: 0.9rem; 
+      color: #495057;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .modal-details p { 
+      margin-bottom: 20px; 
+      line-height: 1.7;
+      color: #555;
+    }
+    .modal-details h3 { 
+      color: #144d03; 
+      margin: 20px 0 12px;
+      font-size: 1.3rem;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    .modal-details h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: orange;
+    }
+    .modal-details ul { 
+      margin-bottom: 25px; 
+      padding-left: 20px;
+    }
+    .modal-details li { 
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 10px;
+    }
+    .modal-details li::before {
+      content: '•';
+      color: orange;
+      font-weight: bold;
+      position: absolute;
+      left: -15px;
+    }
+    .modal-actions { 
+      display: flex; 
+      gap: 15px; 
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+    .modal-btn { 
+      padding: 14px 28px; 
+      border: none; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-weight: bold; 
+      transition: all 0.3s;
+      flex: 1;
+      min-width: 180px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .inquiry-btn { 
+      background: #144d03; 
+      color: white;
+    }
+    .inquiry-btn:hover { 
+      background: orange;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+    }
+    .quote-btn { 
+      background: #144d03; 
+      color: white;
+    }
+    .quote-btn:hover { 
+      background: orange;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+    }
+    .close-btn { 
+      background: #144d03; 
+      color: white;
+    }
+    .close-btn:hover { 
+      background: orange;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+    }
+
+    /* Newsletter */
+    .newsletter { 
+      background: linear-gradient(135deg, #144d03 0%, #144d03 100%); 
+      color: white; 
+      text-align: center; 
+      padding: 3.5rem 1rem; 
+      margin-top: 4rem; 
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+      background-size: cover;
+    }
+    .newsletter h2 { margin-bottom: 1.5rem; position: relative; font-size: 2rem; }
+    .newsletter p { max-width: 600px; margin: 0 auto 2rem; position: relative; }
+    .newsletter form { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; position: relative; }
+    .newsletter input { 
+      padding: 1rem 1.2rem; 
+      border: none; 
+      border-radius: 6px; 
+      width: 300px; 
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .newsletter button { 
+      padding: 1rem 2rem; 
+      border: none; 
+      border-radius: 6px; 
+      background: orange; 
+      color: #144d03; 
+      font-weight: bold; 
+      cursor: pointer; 
+      transition: all 0.3s;
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .newsletter button:hover { 
+      background: orange; 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer { background-color: #144d03; color: white; padding: 3rem 0 1.5rem; }
+    .footer-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 25px; }
+    .footer-logo-img { width: 50px; height: 50px; object-fit: contain; margin-right: 15px; padding: 3px; border-radius: 5px; }
+    .footer-logo-text { font-size: 1.5rem; font-weight: bold; }
+    .footer-logo-text span { color: orange; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .footer-section { flex: 1; min-width: 250px; }
+    .footer-section h3 { margin-bottom: 1.2rem; color: orange; font-size: 1.3rem; position: relative; padding-bottom: 8px; }
+    .footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: orange; }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 0.7rem; }
+    .footer-section a { color: white; text-decoration: none; transition: color 0.3s; }
+    .footer-section a:hover { color: orange; }
+    .social-icons { display: flex; gap: 18px; justify-content: center; margin-top: 1.2rem; }
+    .social-icons a { 
+      color: white; 
+      font-size: 1.5rem; 
+      transition: all 0.3s; 
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+    .social-icons a:hover { 
+      color: #f1c40f; 
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+    .copyright { 
+      border-top: 1px solid rgba(255,255,255,0.15); 
+      padding-top: 1.5rem; 
+      font-size: 0.9rem; 
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float { 
+      position: fixed; 
+      width: 65px; 
+      height: 65px; 
+      bottom: 25px; 
+      right: 25px; 
+      border-radius: 50%; 
+      text-align: center; 
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.3); 
+      z-index: 1000; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: all 0.3s; 
+      background-color: #25d366; 
+      animation: pulse 2s infinite;
+    }
+    .whatsapp-float:hover { 
+      transform: scale(1.1); 
+      box-shadow: 2px 6px 16px rgba(0,0,0,0.4);
+    }
+    .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav ul { display: none; }
+      nav ul.active { display: flex; }
+      nav ul { flex-direction: column; width: 100%; background: #1a5276; padding: 1rem 0; position: absolute; top: 100%; left: 0; z-index: 1000; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+      nav ul li { margin: 10px 0; text-align: center; }
+      .categories-grid, .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .modal-body { flex-direction: column; }
+      .modal-image, .modal-details { min-width: 100%; }
+      .modal-actions { flex-direction: column; }
+      .page-header h1 { font-size: 2.2rem; }
+      .page-header { padding: 3rem 0; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .back-to-categories { align-self: flex-end; }
+    }
+    @media (max-width: 480px) {
+      .categories-grid, .products-grid { grid-template-columns: 1fr; }
+      .category-card, .product-card { max-width: 100%; }
+      .modal-content { padding: 20px; margin: 5% auto; }
+      .newsletter input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo-container">
+        <img src="images/ChatGPT Image Nov 10, 2025, 07_36_46 AM.png" alt="African Kings Logo" class="logo-img" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2260%22 height%3D%2260%22 viewBox%3D%220 0 60 60%22%3E%3Crect width%3D%2260%22 height%3D%2260%22 fill%3D%22%231a5276%22%2F%3E%3Ctext x%3D%2230%22 y%3D%2235%22 font-family%3D%22Arial%22 font-size%3D%2214%22 text-anchor%3D%22middle%22 fill%3D%22white%22%3EAK%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <div class="logo-text">African <span>Kings</span> Suppliers</div>
+      </div>
+      <nav>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="index.html#testimonials">Testimonials</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Products</h1>
+      <p>Browse our comprehensive range of medical equipment and supplies organized by categories</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <span>></span>
+      <span>Products</span>
+    </div>
+  </div>
+
+  <!-- Categories Section -->
+  <section id="categories-section" class="categories container">
+    <h2>Product Categories</h2>
+    <div class="categories-grid" id="categoriesGrid">
+      <!-- Categories will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Products Sections (Hidden by default) -->
+  <section id="laboratory-products" class="products-section container">
+    <div class="section-header">
+      <h2>Laboratory Equipment</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="laboratoryGrid">
+      <!-- Laboratory products will be loaded dynamically -->
+    </div>
+  </section>
+
+   <section id="maternity-products" class="products-section container">
+    <div class="section-header">
+      <h2>Maternity and Baby Care Equipment</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="maternityGrid">
+      <!-- Maternity products will be loaded dynamically -->
+    </div>
+  </section>
+
+   <section id="medical-products" class="products-section container">
+    <div class="section-header">
+      <h2>Medical Consumables</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="medicalGrid">
+      <!-- Consumable products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section id="dental-products" class="products-section container">
+    <div class="section-header">
+      <h2>Dental Equipment</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="dentalGrid">
+      <!-- Dental products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section id="radiology-products" class="products-section container">
+    <div class="section-header">
+      <h2>Radiology Equipment</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="radiologyGrid">
+      <!-- Radiology products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section id="icu-products" class="products-section container">
+    <div class="section-header">
+      <h2>ICU Equipment</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="icuGrid">
+      <!-- ICU products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section id="furniture-products" class="products-section container">
+    <div class="section-header">
+      <h2>Hospital Furniture</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="furnitureGrid">
+      <!-- Furniture products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section id="theatre-products" class="products-section container">
+    <div class="section-header">
+      <h2>Theatre Equipment</h2>
+      <a href="#" class="back-to-categories" onclick="showCategories()">
+        <span>←</span> Back to Categories
+      </a>
+    </div>
+    <div class="products-grid" id="theatreGrid">
+      <!-- Theatre products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Product Detail Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <div class="modal-body" id="modalBody">
+        <!-- Modal content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Stay updated with our latest products, offers, and medical equipment news</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <img src="images/ChatGPT Image Nov 10, 2025, 07_36_46 AM.png" alt="African Kings Logo" class="footer-logo-img" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2250%22 height%3D%2250%22 viewBox%3D%220 0 50 50%22%3E%3Crect width%3D%2250%22 height%3D%2250%22 fill%3D%22%231a5276%22%2F%3E%3Ctext x%3D%2225%22 y%3D%2230%22 font-family%3D%22Arial%22 font-size%3D%2212%22 text-anchor%3D%22middle%22 fill%3D%22white%22%3EAK%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <div class="footer-logo-text">African <span>Kings</span> Suppliers</div>
+      </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <ul>
+            <li>Theatre Equipment</li>
+            <li>Maternity and Baby Care</li>
+            <li>Dental Equipment</li>
+            <li>Radiology Equipment</li>
+            <li>Laboratory Equipment</li>
+            <li>ICU Equipment</li>
+            <li>Hospital Furniture</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>Phone: +254 110 090 572</p>
+          <p>Email: info@africankings.co.ke</p>
+          <p>Nairobi, Kenya</p>
+        </div>
+      </div>
+      <div class="social-icons">
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="LinkedIn">💼</a>
+        <a href="#" title="Instagram">📸</a>
+      </div>
+      <div class="copyright"><p>&copy; 2024 African Kings Suppliers Ltd. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/254110090572" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 .396c-8.84 0-16 7.16-16 16 ..."/></svg>
+  </a>
+
+  <script>
+    // Product Categories Data
+    const categories = [
+      {
+        id: 'laboratory',
+        name: 'Laboratory Equipment',
+        description: 'Complete range of laboratory analyzers, microscopes, centrifuges and diagnostic equipment for accurate medical testing.',
+        image: 'images/SMT-70 Semi-Auto Chemistry Analyzer.PNG',
+        productCount: 18,
+        features: ['Chemistry Analyzers', 'Hematology Systems', 'Microscopes', 'Centrifuges']
+      },
+      {
+        id: 'maternity',
+        name: 'Maternity and Baby Care Equipment',
+        description: 'Complete range of Fetal Monitors, electric gynec bed, cryo gun, Gynecology couch, and ultrasound machines for accurate medical testing.',
+        image: 'images/Birthing Bed.jpeg',
+        productCount: 8,
+        features: ['Fetal monitors', 'Gynecology couch', 'Electric gynec bed', 'Video colposcope']
+      },
+      {
+        id: 'medical',
+        name: 'Medical Consumables',
+        description: 'Complete range of IV Cannula, syringes, blood bags and consumable equipment for accurate medical testing.',
+        image: 'images/modèle pour éditer un rapport en html.jpeg',
+        productCount: 15,
+        features: ['Ultrasound ECG Gel', 'Thermal Paper Roll', 'Blood Bag', 'Syringes']
+      },
+      {
+        id: 'dental',
+        name: 'Dental Equipment',
+        description: 'Modern dental chairs, X-ray systems, and specialized dental instruments for comprehensive dental care.',
+        image: 'images/dental chair unit.PNG',
+        productCount: 18,
+        features: ['Dental Chairs', 'X-ray Systems', 'Sterilizers', 'Handpieces']
+      },
+      {
+        id: 'radiology',
+        name: 'Radiology Equipment',
+        description: 'Advanced imaging systems including X-ray, ultrasound, and ECG machines for precise diagnostics.',
+        image: 'images/IG @kristina_7oh7.jpeg',
+        productCount: 12,
+        features: ['X-ray Machines', 'Ultrasound Systems', 'ECG Machines', 'CT Scanners']
+      },
+      {
+        id: 'icu',
+        name: 'ICU Equipment',
+        description: 'Critical care equipment for intensive care units and emergency departments to save lives.',
+        image: 'images/OP.jpeg',
+        productCount: 8,
+        features: ['Ventilators', 'Patient Monitors', 'Infusion Pumps', 'Defibrillators']
+      },
+      {
+        id: 'furniture',
+        name: 'Hospital Furniture',
+        description: 'Comfortable and functional furniture for hospitals and clinics to enhance patient care.',
+        image: 'images/ICU Equipment _ ICU Equipment Suppliers in UAE _ Dubai.jpeg',
+        productCount: 15,
+        features: ['Hospital Beds', 'Examination Tables', 'Medical Carts', 'ICU Beds']
+      },
+      {
+        id: 'theatre',
+        name: 'Theatre Equipment',
+        description: 'Operating room equipment and surgical instruments for safe and efficient surgical procedures.',
+        image: 'images/Operation Theatre.jpeg',
+        productCount: 16,
+        features: ['Operating Tables', 'Surgical Lights', 'Anesthesia Machines', 'Sterilization']
+      }
+    ];
+
+    // Products Data
+    const products = {
+      laboratory: [
+        {
+          id: 'hematology-analyzer',
+          name: 'SMT-50(5-Part)/ SMT-30(3-Part) Auto Hematology Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/Auto Hematology Analyzer RT-7600.jpg',
+          description: 'Advanced hematology analyzer for complete blood count (CBC) testing with high accuracy and efficiency. Ideal for clinical laboratories and hospitals.',
+          features: [
+            'Automated 3-part and 5-part differential',
+            'High throughput: up to 60 samples/hour',
+            'Compact design with small footprint',
+            'User-friendly interface',
+            'Low reagent consumption'
+          ],
+          specifications: [
+            'Measurement Parameters: 18 parameters + 3 histograms',
+            'Sample Volume: 20μL (Open mode) / 85μL (Closed mode)',
+            'Throughput: Up to 60 samples/hour',
+            'Dimensions: 550mm (W) x 550mm (D) x 470mm (H)'
+          ]
+        },
+        {
+          id: 'biochemistry-analyzer',
+          name: 'SMT-120 Biochemistry Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/SMT-120V (Vet Chemistry Analyzer).jpg',
+          description: 'Fully automated clinical Biochemistry analyzer for precise biochemical testing with random access capability, analysis of liver function, kidney function, electrolytes, myocardium and blood lipids all in one analyzer.',
+          features: [
+            'Delivers a full test report in approximately 12 minutes.',
+            'Integrated thermal printer for hard copies of results.',
+            'Its small size makes it ideal for limited laboratory space, on-site testing, emergency situations, and field rescue.',
+            'Stores up to 500,000 records and can be connected to a Laboratory Information System (LIS).',
+            'Requires only 90–120 µL (or 100 µL) of blood (serum, plasma, or whole blood).'
+          ],
+          specifications: [
+            'Light source: 12V/20W halogen tungsten lamp with a lifespan over 2500 hours',
+            'Testing Principle: Absorption spectroscopy, transmission turbidimetry',
+            'Sample Volume: 90-120μL',
+            'Optical System: 8 synchronous detection wavelengths (340, 405, 450, 505, 546, 600, 630, 850nm)',
+            'Display: 7.0-inch Android 6.5 inch multi-point capacitive touchscreen'
+          ]
+        },
+        {
+          id: 'centrifuge',
+          name: 'Laboratory Centrifuge',
+          category: 'Laboratory Equipment',
+          image: 'images/prodcut-image.jpg',
+          description: 'High-speed centrifuge for various laboratory applications including blood separation and sample preparation.',
+          features: [
+            'Motor: Often uses a brushless induction or universal motor for durability and low maintenance.',
+            'Display: Shows parameters like speed, time, and error codes. Some models offer real-time modification of parameters during a run.',
+            'Cooling: Refrigerated models have temperature control, pre-cooling functions, and continuous cooling to maintain sample integrity.',
+            'Control system: Typically features a microprocessor controller with a digital display for setting and monitoring speed and time.',
+            'Safety: Includes a safety lid interlock to prevent opening during operation, automatic imbalance detection, and emergency stop/release functions.'
+          ],
+          specifications: [
+            'Maximum Speed: Ranges from low speeds (e.g., 5,250 rpm) to very high speeds (e.g., >100,000 rpm) for ultracentrifuges.',
+            'Maximum RCF: Ranges from a few thousand g for low-speed models to over 800,000 x g for ultracentrifuges.',
+            'Capacity: Varies by model, from small volumes in micro-centrifuges to large capacities of over 1 liter in high-capacity models.',
+            'Temperature Control: For refrigerated models, this includes the temperature range and pre-cooling capabilities'
+          ]
+        },
+        {
+          id: 'microscope',
+          name: 'Laboratory Microscope',
+          category: 'Laboratory Equipment',
+          image: '/images/lab microscope.jpg',
+          description: 'Professional biological microscope with LED illumination for clinical and research applications.',
+          features: [
+            'LED illumination with intensity control',
+            'Plan achromatic objectives',
+            'Coaxial coarse and fine focusing',
+            'Built-in mechanical stage',
+            'Ergonomic design'
+          ],
+          specifications: [
+            'Magnification: 40x-1000x',
+            'Objectives: 4x, 10x, 40x, 100x (oil immersion)',
+            'Eyepieces: WF10x/18mm',
+            'Illumination: 3W LED'
+          ]
+        },
+         {
+          id: 'electrolyte-analyzer',
+          name: 'Electrolyte Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/Electrolyte Analyzer.jpg',
+          description: 'Fully automated clinical electrolyte analyzer for precise biochemical testing with random access capability.',
+          features: [
+            'Measuring Technology: Primarily Ion Selective Electrode (ISE). Other methods like flame emission photometry may be used for specific ions.',
+            'Sample Types: Capable of analyzing whole blood, serum, plasma, diluted urine, and cerebrospinal fluid (CSF).',
+            'Data Management & Connectivity: Large data storage capacity (up to 10,000 to 50,000 results) and connectivity options (RS232, USB, Wi-Fi, Bluetooth) for seamless integration with Laboratory Information Systems (LIS).',
+            'Portability/Configuration: Ranging from compact, portable, and handheld devices for point-of-care (POC) testing to larger, benchtop, high-throughput models for central laboratories.',
+            'Quality Control (QC): Built-in quality control features, such as tri-level QC and Levey-Jennings charts, ensure reliable results and data integrity.'
+          ],
+          specifications: [
+            'Display: 7-inch color LCD touch screen',
+            'Printer: Built-in thermal printer',
+            'Dimensions and Weight: Varies widely by model; portable models can be under 5 kg, while benchtop units are heavier',
+            'Analysis Time: 25 to 60 seconds per sample'
+          ]
+        },
+         {
+          id: 'urine-analyzer',
+          name: 'Urine Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/Automated Urine Analyzer.jpg',
+          description: 'Fully automated clinical chemistry analyzer for precise biochemical testing with random access capability.',
+          features: [
+            'Random access testing',
+            'Barcode sample identification',
+            'On-board refrigeration',
+            'Automatic calibration',
+            'Comprehensive quality control'
+          ],
+          specifications: [
+            'Testing Speed: Up to 400 tests/hour',
+            'Sample Capacity: 100 samples',
+            'Reagent Capacity: 40 reagents on board',
+            'Sample Volume: 2-35μL'
+          ]
+        },
+         {
+          id: 'blood-bank-refrigerator',
+          name: 'Blood Bank Refrigerator ',
+          category: 'Laboratory Equipment',
+          image: 'images/Blood bank Refrigerator.jpeg',
+          description: 'Blood bank refrigerators maintain a stable, precise temperature (\(2-6^{\circ }C\)) for storing blood products using features like microprocessor-controlled, forced-air cooling and automated defrost cycles.',
+          features: [
+            'Temperature control: Microprocessor-controlled for precise temperature management.',
+            'Cooling: Forced-air cooling ensures uniform temperature distribution throughout the chamber.',
+            'Defrost: Automatic defrost systems prevent frost buildup and are often a standard feature.',
+            'Alarm system: Audible and visible alarms for high/low temperature, power failure, and door ajar events. Some models offer additional remote alarms via a potential-free contact.',
+            'Backup power: Many models include a battery backup system to ensure continuous operation during power outages.'
+          ],
+          specifications: [
+            'Storage capacity: 	Varies by model, from small benchtop units (around 50L) to large upright models (over 1000L), holding anywhere from a few dozen to hundreds of blood bags.',
+            'Refrigerant type: 	Often uses environmentally friendly, CFC-free refrigerants like R134a or natural refrigerants such as R600a/R290.',
+            'Power supply: Typically 220-240V/50Hz AC or 110V/60Hz AC, with a voltage stabilizer often recommended.',
+            'Standards compliance: Designed to meet international guidelines and regulations such as AABB, FDA (Class II medical device), DIN 13277, and Önorm K 2030.'
+          ]
+        },
+         {
+          id: 'blood-gas-analyzer',
+          name: 'Blood Gas and Electrolyte Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/Blood Gas and Electrolyte Analyzer.jpeg',
+          description: 'Blood gas and electrolyte analyzers feature rapid results (often under a minute), comprehensive testing of parameters and electrolytes. Some models are portable and can run on battery power, with features like built-in printers and connectivity options for data management.',
+          features: [
+            'Fast analysis: Provide results quickly, often in 50 to 90 seconds.',
+            'Automatic calibration: Systems use automatic calibration to ensure accuracy and reduce manual labor.',
+            'Data storage: Can store a large number of test results, often more than 50,000, in their internal memory.',
+            'Connectivity: Include ports for external devices, such as barcode readers and LIS (Laboratory Information System) or HIS (Hospital Information System) connectivity via USB, Bluetooth, or WiFi.',
+            'Integrated printer: Some models have a built-in printer to generate hard copies of results.'
+          ],
+          specifications: [
+            'Analysis time: A typical analysis cycle is under 90 seconds.',
+            'Sample types: Can analyze whole blood, plasma, or serum, depending on the model.',
+            'Electrode technology: Often use solid-state electrodes that require no user maintenance and offer enhanced accuracy and reproducibility. ',
+            'Power supply: Can be mains-powered or run on rechargeable batteries for portability.'
+          ]
+        },
+         {
+          id: 'mini-centrifuge',
+          name: 'Mini Centrifuge',
+          category: 'Laboratory Equipment',
+          image: '/images/mini centrifuge.jpeg',
+          description: 'Mini Centrifuge FM-MC-C101 is ideal for clinical, research, and molecular biology laboratories. It is used for serum extraction, microbial sample processing, blood cell separation, and PCR experiment preparation.',
+          features: [
+            'Powerful centrifugal force generation.',
+            'Flexible multi-tube compatibility.',
+            'Minimal vibration during operation.',
+            'Safe overload protection.'
+          ],
+          specifications: [
+            'Speed Range: 3000 to 10000rpm',
+            'Dimensions(WxHxD): 160 x 176 x 135 mm',
+            'Sample Capacity: 100 samples',
+            'Power consumption: 35W'
+          ]
+        },
+         {
+          id: 'coagulation-analyzer',
+          name: 'Coagulation Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/corgulation analyzer.jpeg',
+          description: 'Coagulation analyzers are laboratory instruments designed to measure the efficiency of blood clotting to diagnose bleeding disorders or monitor anticoagulant therapy. Key features and technical specifications vary between semi-automatic and fully automated models.',
+          features: [
+            'Operation Modes: Available in both fully automatic (autonomous operation, ideal for high-volume labs) and semi-automatic (requires manual sample positioning, suitable for smaller labs/clinics) variants.',
+            'Clotting (Viscosity-based/Opto-mechanical): Detects changes in viscosity or light scattering as a clot forms.',
+            'Refrigerated Reagent Positions: Maintains reagent stability for extended onboard use (24-hour testing availability).',
+            'Cap-piercing: Enables sampling from sealed tubes, reducing biohazard risk.',
+            'Chromogenic: Measures color changes to quantify specific factors like Antithrombin III or Protein C.'
+          ],
+          specifications: [
+            'Throughput: 	60 to 400+ tests per hour (varies by model and test type).',
+            'Detection Channels:	1 to 20 independent channels (varies by semi/fully automatic).',
+            'Reagent Positions:	2 to 40+ positions (often refrigerated).',
+            'Sample Type:	Citrated plasma (most common), whole blood (for POC devices).'
+          ]
+        },
+         {
+          id: 'elisa-reader',
+          name: 'ELISA Microplate Reader',
+          category: 'Laboratory Equipment',
+          image: '/images/Elisa URIT.jpeg',
+          description: 'ELISA microplate readers are specialized spectrophotometers designed to measure the results of enzyme immunoassays in microplates, typically 96-well format.',
+          features: [
+            'Detection Mode: Primarily designed for absorbance (colorimetric) measurements, as most ELISAs are colorimetric assays. Some advanced or multimode readers also offer fluorescence and luminescence detection options.',
+            'User Interface: Modern readers often feature a standalone system with a color touch screen interface and intuitive software, though some are PC-controlled via USB or RS-232 connections.',
+            'Measurement Modes: Supports various reading types, including endpoint (measuring after the reaction stops), kinetic (measuring reaction rate over time), and spectral scanning.',
+            'Self-Diagnosis: Built-in self-checking functions for components like the lamp, filter wheel, and plate transport system to ensure reliable operation.',
+            'Connectivity: Equipped with multiple interface connections, such as USB, RS-232, Ethernet, and sometimes parallel ports for external printers, keyboards, or LIMS.'
+          ],
+          specifications: [
+            'Wavelength Range: Typically 400–800 nm for standard ELISAs; some models cover 200–1000 nm (UV-Vis).',
+            'Standard Filters:	Commonly 405 nm, 450 nm, 492 nm, and 630 nm (with options for additional filters).',
+            'Photodetector:	Silicon photodiodes or Photomultiplier Tubes (PMTs).',
+            'Light Source:	Tungsten halogen lamp or Xenon flash lamp.'
+          ]
+        },
+         {
+          id: 'cytology-analyzer',
+          name: 'Liquid Based Cytology Analyzer',
+          category: 'Laboratory Equipment',
+          image: '/images/cytology analyzer.jpeg',
+          description: 'Cytology analyzers are sophisticated instruments that use automated processes, artificial intelligence (AI), and advanced optics to prepare and analyze cell samples, primarily for disease screening like cancer and infections.',
+          features: [
+            'Automation: The primary feature is the automation of labor-intensive tasks such as sample processing, slide preparation, staining, and initial screening, which reduces manual errors and improves consistency.',
+            'Multi-Sample Compatibility: Analyzers can process various sample types, including gynecological (Pap smears), urine, blood, sputum, serous effusion, and fine needle aspiration (FNA) specimens.',
+            'Integrated Workflow: Analyzers often integrate multiple steps (preparation, staining, analysis) into a single system, streamlining the laboratory workflow.',
+            'Digital Imaging and Remote Access: The ability to capture high-resolution digital images and transfer them to cloud-based systems for remote review by pathologists (telemedicine) is a significant feature, especially for low-resource settings.'
+          ],
+          specifications: [
+            'Throughput/Speed: Ranges from approximately 60 slides per hour for automated LBC processors to results in 10 minutes for point-of-care analyzers.',
+            'Display Interface:	Often features integrated touch screens (e.g., 7" or 12" LCD) for easy operation and monitoring.',
+            'Connectivity:	Includes USB ports, WLAN, and network cable connections for data transfer and remote assistance.',
+            'Storage Capacity:	Large internal memory, capable of storing thousands to hundreds of thousands of test results and images.'
+          ]
+        },
+         {
+          id: 'laboratory-fume-hood',
+          name: 'Laboratory Fume Hood',
+          category: 'Laboratory Equipment',
+          image: '/images/lab fume hood.jpeg',
+          description: 'Laboratory fume hoods are safety devices with key features designed to protect users from hazardous fumes, vapors, and dust by ensuring containment and safe ventilation.',
+          features: [
+            'Airfoil: An aerodynamic shape at the front edge of the work surface that smooths airflow into the hood, reducing turbulence and improving containment efficiency.',
+            'Sash (Window): A clear, movable safety glass panel (tempered or laminated) that provides a physical barrier and splash shield. It can be vertical-sliding, horizontal-sliding, or a combination.',
+            'Lighting: Internal fluorescent or LED lamps, shielded from the interior, to ensure adequate visibility of the work area.',
+            'Exhaust System: Includes a fan/blower (usually on the roof for ducted hoods, or built-in for ductless) and ductwork to expel contaminated air.',
+            'Base Cabinets: Often includes specialized cabinets below the hood for storing corrosives (vented) and flammable materials (unvented, fire-rated).'
+          ],
+          specifications: [
+            'Airflow Face Velocity:	Typically 80–120 feet per minute (fpm) or 0.4–0.6 meters per second (m/s) at the working sash height.',
+            'Dimensions:	Standard widths usually range from 4 to 8 feet (1200 mm to 2400 mm), with depths of 700 mm to 900 mm.',
+            'Noise Level:	Generally designed to operate below 60–68 dB.',
+            'Safety Standards: Must be tested and certified to meet standards such as ASHRAE 110, ANSI/AIHA Z9.5, and OSHA regulations.'
+          ]
+        },
+         {
+          id: 'microplate-reader',
+          name: 'Microplate Reader',
+          category: 'Laboratory Equipment',
+          image: '/images/microplate reader 2.jpeg',
+          description: 'Microplate readers are versatile laboratory instruments used to measure biological, chemical, and physical events in samples contained in microplates.',
+          features: [
+            'Detection Modes:	Absorbance (ELISA, protein/nucleic acid quantification, cell viability), Fluorescence Intensity (DNA/RNA quantification, cell function assays), Luminescence (reporter gene assays, ATP quantification), Time-Resolved Fluorescence (TRF), Fluorescence Polarization (FP), and AlphaScreen/AlphaLISA.',
+            'Plate Compatibility:	Support for various ANSI/SLAS standardized well formats, most commonly 96-well, but also 6-, 24-, 48-, 384-, and 1536-well plates, to accommodate different throughput and volume needs.',
+            'Temperature Control:	Incubation from ambient +4°C up to 45°C or higher, essential for live cell assays and enzyme kinetics.',
+            'Automation	Compatibility: with robotic systems and microplate stackers for high-throughput screening and increased efficiency.',
+            'Shaking:	Linear, orbital, or double-orbital shaking capabilities for mixing samples and improving assay performance.'
+          ],
+          specifications: [
+            'Wavelength Range:	Typically 200–1000 nm for UV-Vis absorbance, with specific ranges for fluorescence excitation/emission.',
+            'Detection Speed:	Varies by model, with some able to read a 96-well plate in seconds.',
+            'Light Source:	Xenon flash lamp, halogen lamp, LEDs, or lasers.',
+            'Sensitivity & Accuracy:	High sensitivity (e.g., femtomole levels for luminescence) and high accuracy in optical density (OD) readings (e.g., 0.001A resolution) are common.'
+          ]
+        },
+         {
+          id: 'laboratory-incubator',
+          name: 'Laboratory Incubator',
+          category: 'Laboratory Equipment',
+          image: '/images/lab incubator.jpeg',
+          description: 'Laboratory incubators feature a double-walled cabinet with insulation, digital controllers for temperature, and stainless steel interiors with adjustable shelves.',
+          features: [
+            'Temperature Control: The primary function, typically maintained by a thermostat and heating/cooling elements. Temperature ranges vary by model (e.g., ambient +5°C to 60°C or refrigerated units from 0°C to 70°C).',
+            'Air Circulation: Perforated or wire mesh shelving allows for even airflow. Some models use fans (forced convection) for faster temperature uniformity and recovery, while others use natural convection for more sensitive samples.',
+            'Easy Cleaning: Stainless steel interiors with rounded corners and removable shelves facilitate maintenance and decontamination.',
+            'Safety Features: Over-temperature protection (safety thermostats), alarms for temperature deviations, and electrical leakage protection.',
+            'Control Panel: A digital or analog interface for setting and monitoring parameters like time, temperature, and alarms.'
+          ],
+          specifications: [
+            'Humidity Control: Maintained via a water reservoir, often >90% relative humidity.',
+            'Refrigeration (Cooled Incubators): Temperature ranges below ambient, e.g., 0°C to 70°C.',
+            'Data Logging/Remote Monitoring: Digital interfaces and network connectivity for real-time tracking and data recording.',
+            'Interior Material:	Corrosion-resistant stainless steel (e.g., grade 304).'
+          ]
+        },
+         {
+          id: 'microbalancee',
+          name: 'Microbalance',
+          category: 'Laboratory Equipment',
+          image: '/images/microbalance.jpeg',
+          description: 'Microbalances are highly precise laboratory instruments designed to weigh minute samples, offering readability down to 0.1 micrograms.',
+          features: [
+            'Connectivity: Multiple interface options like USB, RS232, Ethernet, and Wi-Fi® allow seamless data transfer to PCs, printers, or networks.',
+            'Draft Shields: Essential for creating a stable weighing environment, often featuring automatic or touch-free doors to minimize user interference.',
+            'Automatic Internal Adjustment/Calibration: Features like proFACT or isoCAL automatically calibrate the balance in response to temperature changes, ensuring consistent accuracy without user intervention.',
+            'Data Management and Compliance: Modern microbalances are equipped with advanced software features to meet stringent regulatory requirements (e.g., FDA 21 CFR Part 11, USP Chapter 41).',
+            'High Precision Sensing: Microbalances use highly sensitive electromagnetic force restoration (EFR) or load cell sensors to provide exceptional accuracy and repeatability.'
+          ],
+          specifications: [
+            'Calibration:	Automatic Internal (e.g., isoCAL, proFACT).',
+            'Stabilization Time:	3.5 to 8 seconds.',
+            'Maximum Capacity:	Up to 52 g.',
+            'Minimum Weight (USP):	Down to 0.82 mg.'
+          ]
+        },
+         {
+          id: 'vortex-mixer',
+          name: 'Vortex Mixer Test',
+          category: 'Laboratory Equipment',
+          image: '/images/vortex mixer.jpeg',
+          description: 'Vortex mixers are essential laboratory equipment with key features centered around speed, operation modes, and versatility with accessories. Specifications vary by model but generally include a wide speed range (up to 3000+ rpm), touch or continuous operation modes, and compatibility with various tube sizes.',
+          features: [
+            'Variable Speed Control: Most models offer adjustable speed, typically ranging from 0 rpm (or a low number like 100 or 200 rpm) up to 2500–3200 rpm, allowing for gentle shaking or vigorous vortexing based on sample viscosity and application needs.',
+            'Interchangeable Accessories: A wide variety of attachments are available to accommodate different sample containers, including standard cup heads, foam inserts for various microtube (0.5 mL, 1.5 mL, 2.0 mL) and test tube (15 mL, 50 mL) sizes, and platforms for microplates or flasks.',
+            'Digital/Programmable Options: More advanced digital models offer precise, repeatable results with LED displays for speed and time, a built-in timer, and sometimes programmable pulse modes for enhanced mixing efficiency.',
+            'Ergonomics and Safety: Low-profile designs and ultra-sensitive touch sensors reduce wrist strain. Safety features include spill-proof electronic controls and overload protection.',
+            'Stability and Durability: Most mixers have a robust construction, often with a heavy-duty cast aluminum or zinc alloy base and anti-slip rubber feet (sometimes vacuum suction feet) to ensure stability and prevent the unit from "walking" across the bench during high-speed operation.'
+          ],
+          specifications: [
+            'Speed Range:	0/200 rpm up to 3000–3200 rpm (fixed speed models often 2800 or 3000 rpm).',
+            'Operation Modes:	Touch, Continuous, and sometimes Pulse/Timed.',
+            'Motor Type:	Shaded pole motor or durable, maintenance-free brushless DC motor.',
+            'Max Load Capacity	Typically around 0.5 kg to 1 kg for standard mixers; heavy-duty multi-tube mixers can handle more.'
+          ]
+        },
+      ],
+      maternity: [
+        {
+          id: 'fetal-monitor',
+          name: 'Fetal Monitor',
+          category: 'Maternity Equipment',
+          image: '/images/fetal monitor.jpeg',
+          description: '',
+          features: [
+            'Uterine Activity Monitoring: Measures uterine contractions externally using a TOCO (tocodynamometer) sensor.',
+            'Maternal Monitoring: Many advanced models also monitor maternal vital signs, such as heart rate (MECG) and blood pressure (NIBP).',
+            'Fetal Movement Detection: Includes a manual marker and, often, automatic detection of fetal movement.',
+            'Alarms: Provides audio and visual alerts for abnormal heart rates or other critical events.'
+          ],
+          specifications: [
+            'FHR Measurement Range:	50–240 bpm (or 30–240 bpm on some models)',
+            'Recording:	Thermosensitive paper (Z-fold) with variable speeds (e.g., 1, 2, 3 cm/min)',
+            'Connectivity:	Some models offer Wi-Fi or USB for data transfer.',
+            'Data Storage:	Can store up to 12 to 42 hours of data.'
+          ]
+        },
+        {
+          id: 'gynecology-couch',
+          name: 'Gynecology Couch',
+          category: 'Maternity Equipment',
+          image: '/images/gynecology couch.jpeg',
+          description: 'Gynecology couches (or tables/chairs) are designed to provide comfort and safety for patients while offering optimal access and ergonomic positioning for practitioners during examinations and procedures.',
+          features: [
+            'Adjustable Positioning: Most couches offer adjustable height, backrest, and seat/leg sections, controlled via electric motors (hand or foot switches), gas struts, or manual mechanisms.',
+            'Mobility & Stability: Features adjustable feet for stability on uneven floors and retractable or lockable castors/wheels for easy movement and safety.',
+            'Ergonomics: Low minimum height settings allow for easy patient transfers (including from wheelchairs) and reduce manual handling risks for practitioners.',
+            'Upholstery: Heavy-duty, easy-to-clean PVC vinyl that is fire, stain, mildew, oil, and water resistant. Many materials are also anti-microbial.',
+            'Frame: Robust frame, often made of epoxy-coated or stainless steel, designed for strength and durability.'
+          ],
+          specifications: [
+            'Weight Capacity: High safe working loads, typically ranging from 150 kg to 250 kg (approx. 330 lbs to 550 lbs).',
+            'Height Range: Adjustable height, for example, from a low of 49 cm (20") to a high of 118 cm (46") to suit different practitioner heights and patient needs.',
+            'Padding: Comfortable, high-density foam padding (e.g., 5cm or 7.5cm thickness).',
+            'Certifications: Often CE, FDA, and ISO13485 certified, indicating compliance with health and safety standards.'
+          ]
+        },
+        {
+          id: 'electric-gynec-bed',
+          name: 'Electric Gynec Bed',
+          category: 'Maternity Equipment',
+          image: '/images/electric gynec bed.jpeg',
+          description: 'Electric gynec beds feature adjustable height and backrest angles, Trendelenburg and reverse Trendelenburg positioning, and often have electric or foot-pedal controls with battery backup.',
+          features: [
+            'Electric adjustments: Height, backrest angle, and Trendelenburg/reverse Trendelenburg are electrically controlled for precise and smooth movements.',
+            'Multiple functions: Many models can be used for various procedures, including examinations, labor, delivery, and C-sections, often with removable components like a baby table.',
+            'Battery backup: A backup battery is often included for continued operation during a power outage.',
+            'Durable construction: Stainless steel is frequently used for the frame and base, and the mattress is typically made of high-density foam covered in easy-to-clean artificial leather.',
+            'Mobility: The beds are equipped with castors, often with a central braking system, for easy movement and secure placement.'
+          ],
+          specifications: [
+            'Loading capacity: Up to \(225\) kg is a common specification.',
+            'Mattress: High-density foam, with a thickness of around \(8\) cm is typical.',
+            'Certifications: ISO and CE certifications are often mentioned. ',
+            'Dimensions: Approximate dimensions can be around 1780mm to 600mm for length and width, with a height range from approximately 680mm to 880mm).'
+          ]
+        },
+        {
+          id: 'fetal-droppler',
+          name: 'Fetal Droppler',
+          category: 'Maternity Equipment',
+          image: '/images/fetal droppler.jpeg',
+          description: 'Fetal dropplers feature a heart rate display, a sensitive probe, and both an audio output and optional printer.',
+          features: [
+            'Display: A backlit LCD screen shows FHR values, pulse indicators, and sometimes a line graph trace.',
+            'Audio Output: A built-in loudspeaker provides clear audio of the fetal heartbeat. Some models also have a headphone jack, and some have a built-in printer.',
+            'Power & Battery: Powered by batteries (often rechargeable AA or external power adapters), with a battery indicator and auto power-off feature to conserve energy.',
+            'Probe: A sensitive transducer probe detects the fetal heartbeat. Many probes are designed to be durable, shock-proof, and water-resistant (e.g., IPX4).',
+            'Alarm System: Alerts users to abnormally high (tachycardia) or low (bradycardia) fetal heart rates, or signal loss.'
+          ],
+          specifications: [
+            'FHR Range: Typically 30–240 bpm, though some older models might have a different range.',
+            'Safety Standards: Devices must comply with international safety standards like IEC 60601-1.',
+            'Dimensions & Weight: Varies by model, but typically designed to be handheld and lightweight (e.g., under 0.45 kg).',
+            'Ultrasound Frequency: Commonly 2.0 MHz or 2.5 MHz, with other options like 3 MHz available for specific models.'
+          ]
+        },
+        {
+          id: 'video-colposcope',
+          name: 'Video Colposcope',
+          category: 'Maternity Equipment',
+          image: '/images/video colposcope.jpeg',
+          description: 'Video colposcopes incorporate high-resolution imaging, powerful magnification, and advanced software for enhanced diagnostic capabilities in gynecological exams.',
+          features: [
+            'High-Resolution Imaging: Equipped with HD or even 4K cameras (often Sony CCD or CMOS sensors) for crystal clear, true-color images and video of the cervix, vagina, and vulva.',
+            'Advanced Illumination: Utilize super bright, shadow-free LED cold light sources that provide natural color reproduction and have a long lifespan (often over 20,000 to 60,000 hours).',
+            'Electronic Filters: Include electronic green filters (which enhance the contrast of blood vessels to help identify abnormal vascular structures) and sometimes blue or amber filters, without decreasing illumination.',
+            'Magnification & Focus: Offer a wide range of optical and digital magnification (from 1x up to 40x or even 252x, depending on the model) and both auto/manual focusing capabilities.',
+            'Data Management Software: Come with specialized software to capture, store, analyze, and manage patient data, images, and videos.'
+          ],
+          specifications: [
+            'Working Distance: Common ranges are around 250-300 mm.',
+            'Magnification Range:	Typically from a few times up to 40x optical/digital zoom (some models offer higher).',
+            'Connectivity:	HDMI, USB, DVI, VGA, S-Video, and sometimes LAN/WiFi for network integration.',
+            'Filters:	Built-in electronic green filter and sometimes other color filters.'
+          ]
+        },
+        {
+          id: 'gynecology-instrument',
+          name: 'Gynecology Instrument',
+          category: 'Maternity Equipment',
+          image: '/images/gynecology instruments.jpeg',
+          description: 'Gynecological instruments are categorized by function, with features like speculums for visualizing the cervix, forceps for grasping and clamping tissue, and dilators for widening the cervix.',
+          features: [
+            'Vaginal Speculum: Made of stainless steel or disposable plastic; available in small, medium, and large sizes (e.g., Cusco M: 100mm x 25mm).',
+            'Forceps: Made of stainless steel; lengths vary by type and use (e.g., Sponge Holding Forceps 6, 8, 10 inches; Tenaculum Forceps 8 or 10 inches).',
+            'Curette: Stainless steel, single or double-ended; specific sizes (e.g., Sims curette No. 00-4).',
+            'Uterine dilator: Stainless steel; available in sets with graduated diameters.',
+            'Uterine sound: Made of stainless steel; approximately 12 inches (30 cm) in length.'
+          ],
+          specifications: [
+            'Material: Most are made from high-grade surgical stainless steel, ensuring reliability and long performance. Some instruments, particularly speculums, also come in disposable, patient-friendly plastic options with smooth, rounded edges to enhance comfort and eliminate cross-contamination risks.',
+            'Sterilization: Reusable instruments are designed to withstand repeated sterilization cycles (e.g., autoclaving).',
+            'Durability: Built for long-term use and resistance to corrosion.',
+            'Finish: Instruments often have a polished or matte/satin finish.'
+          ]
+        },
+        {
+          id: 'cyro-gun',
+          name: 'Cyro Gun',
+          category: 'Maternity Equipment',
+          image: '/images/cyro gun.jpeg',
+          description: 'Cryo guns generally fall into two main categories: those used for special effects (using co2 gas) and those used for medical/dermatological purposes (using liquid nitrogen or other cryogenic gases).',
+          features: [
+            'Output:	Dense plumes of chilled fog, typically reaching 15-35 feet (6-10 meters).',
+            'Control:	Manual, on-demand trigger operation (no electricity required for the main function, although some models include LEDs).',
+            'Portability:	Lightweight (around 2.7-3.5 kg or 6-8 lbs), designed for handheld use and full maneuverability.',
+            'Safety:	The fog is cold but dissipates quickly and is safe for indoor/outdoor use when handled correctly.'
+          ],
+          specifications: [
+            'Capacity:	Available in various volumes, commonly 300 ml or 500 ml flasks.',
+            'Material:	Durable construction, often stainless steel and brass with insulated components; parts are often fully autoclavable.',
+            'Control:	Fingertip-controlled trigger for precise application and an instant defrost function.',
+            'Application:	Direct application via spray or contact (using interchangeable probes/tips of varying apertures).'
+          ]
+        },
+        {
+          id: 'ultrasound-machine',
+          name: 'Ultrasound Machine',
+          category: 'Maternity Equipment',
+          image: '/images/ultrasound machine.jpeg',
+          description: 'Ultrasound machines are sophisticated diagnostic tools with features and specifications varying by application, from basic 2D imaging to advanced AI-powered systems with diverse functionalities and technical specifications.',
+          features: [
+            'Image Processing and Enhancement: Features like Speckle Reduction Imaging (SRI) and Tissue Harmonic Imaging (THI) enhance image quality by reducing noise and artifacts. Advanced options include real-time compound imaging and enhanced needle visualization for procedures.',
+            'Storage: Inbuilt hard drives (e.g., 500GB or 1TB or more) for storing patient information and thousands of images/cine loops.',
+            'Connectivity: DICOM 3.0 compatibility for integration with PACS (Picture Archiving and Communication Systems), USB ports, LAN, Wi-Fi, and CD/DVD-RW drives are common for data transfer and networking.',
+            'Linear probes: (high frequency, e.g., 4-16 MHz) are used for superficial structures like vascular, small parts (thyroid, breast), and musculoskeletal imaging.',
+            'Formats: Images can be stored in raw data, DICOM, JPEG, AVI, and MPEG formats.'
+          ],
+          specifications: [
+            'Portability: Options range from large cart-based systems to highly portable laptop-style and handheld, battery-powered devices.',
+            'Power: Standard power input (e.g., 220-240VAC, 50Hz) and often an inbuilt rechargeable battery backup (e.g., 30 minutes to 2 hours of scanning time) for mobility and emergencies.',
+            'Ergonomics: Adjustable height control panels and monitor arms are common ergonomic features.',
+            'Safety and Standards: Units should be certified by regulatory bodies such as USFDA or European CE, conforming to relevant electrical safety standards (e.g., IEC-60601).'
+          ]
+        },
+      ],
+      medical: [
+        {
+          id: 'iv-cannula',
+          name: 'IV Cannula Set',
+          category: 'Medical Consumables',
+          image: '/images/IV Cannula.jpeg',
+          description: 'An IV cannula set is a sterile, single-use medical device used to access a vein for administering fluids, medications, or blood transfusions.',
+          features: [
+            'Catheter: A soft, flexible, kink-resistant tube made of a biocompatible material like PTFE (Teflon) or polyurethane that remains in the vein after insertion. It often includes radio-opaque lines to be visible on X-rays.',
+            'Stainless Steel Needle (Stylet): A sharp, beveled needle inside the catheter used to puncture the skin and vein. It is removed once the catheter is in place.',
+            'Flashback Chamber: A transparent chamber that allows the healthcare provider to see a flash of blood upon successful venipuncture, confirming correct placement in the vein.',
+            'Wings or Grip: Flexible extensions on the hub designed for easy handling and secure fixation with tape to prevent accidental displacement.',
+            'Luer Lock Connector: A secure, threaded connector at the end of the cannula that connects to the IV tubing or other standard IV equipment, preventing leaks and accidental disconnections.'
+          ],
+          specifications: [
+            'Orange(240-290)- Trauma, massive fluid resuscitation, rapid volume replacement.',
+            'Grey(176-180)- Surgery, rapid volume replacement, high-viscosity contrast agent infusion.',
+            'Green(75-90): 	Blood transfusions, routine surgical fluid infusion, general adult use.',
+            'Blue(31-36): 	Elderly patients, pediatric patients, slower infusions, fragile veins.'
+          ]
+        },
+        {
+          id: 'syringe',
+          name: 'Disposable Syringe',
+          category: 'Medical Consumables',
+          image: '/images/syringe.jpeg',
+          description: 'Disposable syringes are single-use, sterile medical devices typically made of medical-grade plastic, designed to prevent cross-contamination.',
+          features: [
+            'Single-use design: Intended to be discarded after one use to eliminate the risk of cross-infection.',
+            'Material: Primarily made from medical-grade plastic, such as polypropylene (PP) and polyethylene (PE).',
+            'Sterility: Individually sealed in moisture-proof packaging (e.g., blister packs) and sterilized, often using ethylene oxide (ETO) or radiation, to ensure sterility until use.',
+            'Safety: Designed to be non-toxic, non-pyrogenic, latex-free, DEHP-free, and PVC-free to ensure patient safety.',
+            'Smooth operation: Features a tightly fitting piston and often silicone oil lubricant to ensure smooth plunger movement for controlled administration.'
+          ],
+          specifications: [
+            'Syringe Tip Type	Luer Lock: A screw-thread mechanism that securely fastens the needle, ideal for high-pressure injections or frequent needle changes.',
+            'Needle Gauge:	Measured in gauge (G), with a higher number indicating a thinner needle. Common ranges are 18G to 32G.',
+            'Components:	Typically a two-piece (barrel and plunger) or three-piece (barrel, plunger, and stopper/gasket) construction.',
+            'Standards & Certifications: Products conform to international standards such as ISO 7886-1 (sterile single-use syringes), ISO 7864 (sterile hypodermic needles), and ISO 13485 (quality management systems).'
+          ]
+        },
+        {
+          id: 'blood-bag',
+          name: 'Blood Bag ',
+          category: 'Medical Consumables',
+          image: '/images/blood bag.jpeg',
+          description: 'Blood bags are specialized, sterile medical containers made of high-quality, biocompatible PVC designed for the safe collection, processing, and storage of blood and its various components.',
+          features: [
+            'Material: High-quality, medical-grade polyvinyl chloride (PVC) plasticized with DEHP (Di-2-ethylhexyl phthalate) or alternative plasticizers like TOTM, offering flexibility, durability, and biocompatibility.',
+            'Sterility & Safety	Bags: are sterile, non-pyrogenic, non-toxic, and non-hemolytic; designed as a closed system to prevent contamination.',
+            'Needle	Ultra-thin wall, 16- or 17-gauge, triple-bevel, siliconized needle for smooth venipuncture and minimal donor pain.',
+            'Tubing:	Flexible, kink-resistant, non-sticking, transparent, and leak-proof tubing with unique ID/segment numbers for traceability.',
+            'Shelf Life:	Generally has a shelf life of up to 24 months from the date of manufacture before use.'
+          ],
+          specifications: [
+            'Anticoagulant:	Contains a pre-filled anticoagulant and preservative solution like CPDA-1 (Citrate Phosphate Dextrose Adenine-1) or CPD/SAG-M.',
+            'Capacity: Typically available in various volumes, such as 250 mL, 350 mL, 450 mL, and 500 mL for primary bags.',
+            'Ports & Clamps:	Features tamper-proof, easy-open outlet ports and plastic pinch clamps to maintain a closed, sterile system.',
+            'Labeling:	Labels are permanent, water/temperature-resistant, and adhere to international standards like ISBT128 and ISO 3826, allowing clear handwriting and barcode scanning for tracking.'
+          ]
+        },
+        {
+          id: 'face-mask',
+          name: 'Face Mask',
+          category: 'Medical Consumables',
+          image: '/images/face masks.jpeg',
+          description: 'Facemasks are distinguished by key features such as fit and material, and quantifiable specifications including filtration efficiency, fluid resistance, and breathability, typically governed by international standards.',
+          features: [
+            'Fit: This is a crucial factor. Surgical masks are loose-fitting, creating a physical barrier, while respirators (like N95s) are designed to form a tight seal around the nose and mouth for a high level of protection.',
+            'Nose Piece: An adjustable nose wire is a common feature that helps form a closer fit and prevent air leakage around the nose.',
+            'Exhalation Valve: Some respirators include an exhalation valve to make breathing out easier and reduce heat build-up. However, these masks should not be used in sterile conditions or for source control as they allow unfiltered air to escape.',
+            'Reusability: Some masks (e.g., certain cloth or full-face industrial masks with replaceable filters) are reusable, while most surgical and filtering facepiece respirators are single-use, disposable devices.',
+            'Head Straps/Earloops: The method of securing the mask varies, from soft earloops for convenience to more secure four-strap suspensions or head harnesses that provide a tighter, more reliable fit for industrial/medical use.'
+          ],
+          specifications: [
+            'Fluid Resistance: Measures the masks resistance to penetration of synthetic blood or other liquids under pressure (measured in mmHg or kPa). This is vital for use in medical and surgical settings to protect against splashes and splatter.',
+            'Breathability (Differential Pressure): Measures the airflow resistance to ensure comfort and that breathing is not overly difficult.',
+            'Biocompatibility: Assesses the materials to ensure they are safe for contact with human skin and do not cause irritation or adverse biological responses.',
+            'Standards/Certifications: Compliance with specific standards (e.g., ASTM F2100, EN 14683, NIOSH 42 CFR 84, GB2626) guarantees specific performance levels.'
+          ]
+        },
+        {
+          id: 'scalp-vein-set',
+          name: 'Scalp Vein Set',
+          category: 'Medical Consumables',
+          image: '/images/scalp vein set.jpeg',
+          description: 'A scalp vein set, also known as a butterfly needle or winged infusion set, is a sterile, single-use medical device used for venipuncture, particularly in patients with small or delicate veins (e.g., pediatric or geriatric patients).',
+          features: [
+            'Winged Design: The most prominent feature is the two soft, flexible, butterfly-shaped wings. These provide an easy and secure grip for the healthcare professional during insertion and help stabilize the needle after placement to prevent dislodgment.',
+            'Flexible Tubing: A soft, transparent, non-toxic, and kink-resistant medical-grade PVC tube connects the needle to the connector. The transparency allows for clear visibility and monitoring of fluid flow or blood return.',
+            'Luer Connector: The tubing ends in a female Luer tip or Luer lock connector, which ensures a secure, leak-proof connection to other medical devices like syringes, IV bags, or vacuum tube holders.',
+            'Safety Options: Many modern scalp vein sets come with integrated safety features, such as needle shields, retractable needles, or safety clips, to cover the needle after use and minimize the risk of accidental needlestick injuries and the spread of bloodborne diseases.',
+            'Sterility and Packaging: Each set is a disposable, single-use device, sterilized by ethylene oxide (EtO) gas, and individually packed in a blister pack or PE (polyethylene) bag to maintain aseptic integrity.'
+          ],
+          specifications: [
+            'Needle Length: Typically ranges from 0.5 to 0.75 inches (about 12 mm to 19 mm).',
+            'Tubing Length: Varies, but commonly ranges from 12 to 36 inches (approximately 30 cm to 90 cm) to allow for some patient movement and flexibility during procedures.',
+            'Materials: Constructed from medical-grade, biocompatible materials, including stainless steel (needle), PVC (tubing and wings), and often latex-free for patient safety.',
+            'Sterilization Method: Typically Ethylene Oxide (EtO) sterilized, ensuring the product is non-toxic and non-pyrogenic.'
+          ]
+        },
+        {
+          id: 'urine-bag',
+          name: 'Urine Bag',
+          category: 'Medical Consumables',
+          image: '/images/urine bag.jpeg',
+          description: 'Urine bags are medical devices with a variety of features designed for safe, hygienic urine collection and a range of specifications regarding size, material, and function.',
+          features: [
+            'Anti-Reflux Valve/Chamber: A non-return mechanism inside the bag that prevents urine from flowing back up the tubing toward the bladder, significantly reducing the risk of urinary tract infections (UTIs).',
+            'Graduated Scale: Clear, easy-to-read volume measurements (in mL) on the bag body for accurate monitoring of urine output.',
+            'Kink-Resistant Tubing: Flexible, often star-shaped or wide-bore tubing designed to ensure an uninterrupted flow of urine from the catheter to the bag.',
+            'Sampling Port: A needle-free or needle-accessible port on the tubing for safe, sterile collection of a urine sample without contaminating the closed system.',
+            'Odor Containment/Filter: Materials and designs that help minimize odor.'
+          ],
+          specifications: [
+            'Capacity: Ranging from smaller leg bags (350 mL, 500 mL, 750 mL, 1000 mL) for mobility to larger bedside/night bags (1500 mL, 2000 mL, 4000 mL) for overnight or non-ambulatory use.',
+            'Tubing Length: Available in various lengths, including short (direct inlet or 6–10 cm) for thigh placement, long (90 cm to 150 cm) for bedside use or calf placement, with options that can sometimes be trimmed to size by a healthcare professional.',
+            'Sterility: Bags are typically sold as sterile (EtO sterilized) or non-sterile options. Sterile bags are essential when connected to an indwelling catheter to maintain a closed drainage system, while non-sterile bags may be used with external sheaths.',
+            'Single-Use vs. Reusable: Most urine bags are intended for single use and disposal, while some specific models or systems may be reusable and require specific cleaning protocols.'
+          ]
+        },
+        {
+          id: 'gauze-swab',
+          name: 'Non Sterile Gauze Swab',
+          category: 'Medical Consumables',
+          image: '/images/gauze swab.jpeg',
+          description: 'Gauze swabs are a fundamental medical supply with a range of standard features focused on safety and absorbency, and variable specifications regarding size, weave, and sterility.',
+          features: [
+            'Material: Primarily made from 100% carded cotton yarn, which is soft, skin-friendly, and highly absorbent.',
+            'High Absorbency: The primary function is to absorb blood, fluids, and exudates quickly and effectively from a wound site.',
+            'Latex-Free: Generally latex-free, making them safe for use on patients with latex sensitivities.',
+            'Safety Standards: Products are typically manufactured to stringent international standards like BP (British Pharmacopoeia) or EN 14079, ensuring quality, purity (free from optical whiteners, starch, or dextrin), and neutral pH.',
+            'Low Linting: Manufacturing processes, such as folded (or "American") edges, help to minimize loose threads or fibers from detaching and contaminating the wound.'
+          ],
+          specifications: [
+            'Size:	Common sizes include 5cm x 5cm, 7.5cm x 7.5cm, and 10cm x 10cm (other sizes are available for specific uses like abdominal pads).',
+            'Weave Type/Density:	Woven (e.g., Type 13 or Type 17 thread count) or Non-woven. Type 17 has a tighter weave than Type 13.',
+            'Packaging:	Individually wrapped sterile pouches or bulk packs (e.g., 100 per pack)',
+            'Color:	Usually white (bleached); sometimes dyed green or blue for veterinary or specific theatre use.'
+          ]
+        },
+        {
+          id: '3-way-stopcock',
+          name: '3-Way Stopcock',
+          category: 'Medical Consumables',
+          image: '/images/3 way stopcock.jpeg',
+          description: 'A 3-way stopcock is a vital medical device used to control the direction and flow of fluids or gases in intravenous (IV) therapy, pressure monitoring, and blood sampling.',
+          features: [
+            'Three Ports: The device has three openings, typically a combination of female luer lock and male luer lock ports, which connect to IV lines, syringes, catheters, or other standard medical equipment.',
+            'Transparent Body: The main body is made of medical-grade, transparent polycarbonate, allowing healthcare professionals to easily visualize the fluid flow and detect any air bubbles.',
+            'Secure Connections: Universal luer lock or luer slip connectors ensure secure, leak-proof connections to prevent contamination and ensure patient safety.',
+            'Biocompatible Materials: They are made from non-toxic, medical-grade materials that do not react with the fluids or medications being administered.',
+            'Sterile and Single-Use: Most stopcocks are individually packaged, sterile, non-pyrogenic, and designed for single use to prevent cross-contamination.'
+          ],
+          specifications: [
+            'Pressure Rating:	Available in low (up to 4.5 bar or 65 psi), medium, and high-pressure (up to 10 bars or 100 psi+) variants to suit various applications like standard infusions or power injections.',
+            'Material:	Made from medical-grade polycarbonate (PC), high-density polyethylene (HDPE), and polypropylene (PP)',
+            'Lipid Resistance:	Specific models are made with lipid-resistant polymers, essential for the safe administration of fat-based medications like Total Parenteral Nutrition (TPN) or certain chemotherapy drugs, as standard materials can degrade.',
+            'Extension Tubing:	Variants are available with integrated kink-resistant PVC extension tubing (ranging from 10 cm to 200 cm) to reduce tension on the catheter site and provide greater access flexibility.'
+          ]
+        },
+        {
+          id: 'ultrasound-ecg-gel',
+          name: 'Ultrasound ECG Gel',
+          category: 'Medical Consumables',
+          image: '/images/ultrasound ecg gel.jpeg',
+          description: 'Ultrasound and ECG gel is a highly conductive, water-soluble medium designed for medical diagnostic and therapeutic uses, ensuring clear signals and images by eliminating air between a transducer/electrode and the skin.',
+          features: [
+            'High conductivity: Ensures optimal signal transmission for clear, accurate readings in both diagnostic and therapeutic applications.',
+            'Versatile use: Suitable for a wide range of medical procedures, including ultrasound (USG), ECG, EEG, sonography, and physiotherapy.',
+            'Non-greasy and non-staining: The gel has a smooth consistency that is easy to apply, does not stain surfaces, and feels comfortable on the skin.',
+            'Water-soluble: Allows for easy cleanup with a towel or tissue, leaving no residue.',
+            'Hypoallergenic and safe: Formulated to be gentle on all skin types, minimizing the risk of irritation.'
+          ],
+          specifications: [
+            'Viscosity: High viscosity to maintain proper adhesion for electrodes and prevent it from drying out during a procedure.',
+            'Composition: Water-based, microbiologically tested, and free from harmful chemicals like salt and formaldehyde in some cases.',
+            'Odor: Odorless to ensure patient comfort.',
+            'Chemical neutrality: Chemically neutral to prevent any interaction with the patients skin or the equipment.'
+          ]
+        },
+        {
+          id: 'ecg-paper',
+          name: 'ECG Paper',
+          category: 'Medical Consumables',
+          image: '/images/ecg paper.jpeg',
+          description: 'ECG paper is a specialized, medical-grade, thermal paper featuring a standardized grid used to accurately record and interpret the hearts electrical activity. Its features and specifications are critical for accurate diagnosis.',
+          features: [
+            'Thermal Sensitivity: Most modern ECG paper is coated with a heat-sensitive chemical layer that darkens when exposed to the heat of the ECG machines thermal print head. This means no ink or ribbons are needed for printing, allowing for silent, smudge-free, and quick printing.',
+            'Standardized Grid Pattern: The paper has a precisely calibrated red or blue grid. This grid is essential for measuring time and voltage intervals accurately.',
+            'Horizontal Axis (Time): Each small 1 mm square represents 0.04 seconds. Each large 5 mm square (made of 5 small squares) represents 0.2 seconds.',
+            'Medical Grade Material: The paper is made from high-quality, smooth medical-grade materials to ensure high print definition and prevent damage to the sensitive components of the ECG machines print head.',
+            'Durability and Archival Quality: High-quality ECG paper is designed to resist fading and degradation over time, allowing records to be preserved for long-term patient history and medico-legal purposes.'
+          ],
+          specifications: [
+            'Rolls:	A continuous feed, ideal for long, uninterrupted recordings, such as during stress tests or continuous monitoring in hospitals.',
+            'Sheets:	Individual sheets for machines that print single test reports.',
+            'Z-Fold / Fan-Fold:	Pre-folded into an accordion (zigzag) pattern, allowing for easy loading, stacking, and storage in portable and compact ECG devices. Perforated for easy tearing into individual sheets.'
+          ]
+        },
+        {
+          id: 'cotton-balls',
+          name: 'Cotton Balls',
+          category: 'Medical Consumables',
+          image: '/images/cotton balls.jpeg',
+          description: 'Cotton balls are a versatile product primarily characterized by their softness, high absorbency, and composition of 100% natural cotton. They are available in various specifications regarding size, sterility, and packaging to suit a wide range of uses in medical, cosmetic, and household applications.',
+          features: [
+            'Material: Typically made from 100% pure, natural, and often bleached cotton fibers, though synthetic (polyester/rayon) alternatives exist.',
+            'Absorbency: Highly absorbent, designed to soak up liquids quickly and hold many times their weight in fluid, such as water, alcohol, astringents, or makeup remover.',
+            'Hypoallergenic/Skin-Friendly: Often hypoallergenic and non-toxic, reducing the risk of irritation, making them safe for sensitive skin, babies, and pets.',
+            'Shape Retention: Designed to retain their shape, wet or dry, and resist falling apart or leaving excessive lint during use.',
+            'Biodegradable: As a natural product, pure cotton balls are biodegradable.'
+          ],
+          specifications: [
+            'Size: Available in a range of sizes, including small, medium, large, and jumbo, typically measured by diameter (e.g., 1 inch, 1.25 inches) or weight per ball (e.g., 0.3g to 2g).',
+            'Color: Usually pure white due to bleaching, but naturally colored or dyed options are available for arts and crafts.',
+            'Packaging: Sold in various quantities (e.g., packs of 100, 2000 count bulk bags) in poly-bags or sealed containers. Some packaging is resealable to maintain hygiene.'
+          ]
+        },
+        {
+          id: 'kidney-tray',
+          name: 'Kidney Tray',
+          category: 'Medical Consumables',
+          image: '/images/kidney tray.jpeg',
+          description: 'Kidney trays (also known as emesis basins) are shallow, curved containers primarily used in medical and surgical settings for collecting waste, fluids, and holding instruments.',
+          features: [
+            'Ergonomic, Kidney Shape: The distinctive curved design allows the tray to fit comfortably and snugly against a patients body (such as under the chin or near a wound) to catch falling fluids or debris without spillage.',
+            'Safety Lip/Rolled Edges: Most trays feature a raised or moderate edge height/lip to prevent contents (liquids, small instruments, dressings) from spilling out.',
+            'Hygienic Surface: The surfaces are typically smooth, non-porous, and resist sticking impurities, which makes them easy to clean and sterilize effectively.',
+            'Sterilization Compatibility: Reusable trays (especially stainless steel and some heat-resistant plastics) are designed to be autoclavable (withstanding high-temperature sterilization) to maintain hygiene standards.',
+            'Optional Lids: Some models come with tight-fitting lids to maintain sterility of contents or securely contain bio-waste during transport for disposal.'
+          ],
+          specifications: [
+            'Material:	Stainless Steel (e.g., SS 304, SS 201), Medical-grade Plastic, or Molded Pulp.',
+            'Shape:	Kidney-shaped base and sloping walls',
+            'Capacity:	Typically ranges from 200 ml (small) to over 1200 ml (large)',
+            'Finish (Steel):	Highly polished or satin finish, seamless construction'
+          ]
+        },
+        {
+          id: 'blood-pressure-monitor',
+          name: 'Blood Pressure Monitor',
+          category: 'Medical Consumables',
+          image: '/images/blood pressure monitor.jpeg',
+          description: 'Blood pressure monitors offer a range of features and specifications, including clinical validation for accuracy, appropriate cuff sizing, large displays, and memory storage, which are essential for effective home monitoring.',
+          features: [
+            'Clinical Validation/Accuracy: This is the most crucial feature. Ensure the device has been independently tested and validated for accuracy by recognized bodies (e.g., ESH, BHS, AAMI/ISO).',
+            'rregular Heartbeat (IHB) Detection: Many monitors can detect and alert the user to irregular heartbeats, which can be an early sign of conditions like atrial fibrillation.',
+            'Hypertension Indicator/Risk Category: A color-coded or on-screen indicator that classifies your reading according to international hypertension guidelines, providing immediate visual feedback.',
+            'Memory Storage with Date/Time: The ability to store multiple readings (e.g., 60-200 per user) with date and time stamps is vital for tracking trends over time. Many models support multiple users.',
+            'Connectivity: Smart monitors offer Bluetooth or Wi-Fi connectivity to sync data with smartphone health apps (e.g., Apple Health, Google Fit), allowing for easy tracking and sharing with healthcare providers.'
+          ],
+          specifications: [
+            'Measurement Method:	Most home monitors use the oscillometric method, which is reliable and easy to use.',
+            'Cuff Type & Size:	Upper arm cuffs are generally recommended for better accuracy than wrist cuffs. Cuffs come in various sizes (e.g., small, standard/medium, large, extra-large), and the correct size for your arm circumference is essential for accuracy.',
+            'Power Source:	Devices typically operate on AA alkaline batteries but many offer a dual power mode with an optional or included AC adapter.',
+            'Accuracy:	Clinical accuracy is typically specified as within +/- 3 mmHg for blood pressure and +/- 5% for pulse.'
+          ]
+        },
+        {
+          id: 'medical-gloves',
+          name: 'Medical Gloves',
+          category: 'Medical Consumables',
+          image: '/images/medical gloves.jpeg',
+          description: 'Medical gloves have specific features and specifications, including material composition (nitrile, latex, vinyl), sterility, and physical properties such as dimensions, thickness, and an Acceptable Quality Limit (AQL) for barrier integrity.',
+          features: [
+            'Vinyl: Made from PVC, it is the most cost-effective option for low-risk, short-duration tasks, but provides less durability and protection against chemicals and pathogens than the others.',
+            'Sterility: Gloves are available as either sterile (individually packaged for surgical/invasive procedures) or non-sterile (for general examinations and routine care).',
+            'Cuff Type: A beaded cuff is common, providing extra strength and helping prevent liquid rollback. Surgical gloves may have a straight cuff with an adhesive band for a secure fit over a gown.',
+            'Surface Texture: Gloves can have smooth, micro-textured, or fully textured surfaces (especially on the fingertips) to enhance grip in wet or oily conditions.',
+            'Shape: Examination gloves are typically ambidextrous, while surgical gloves are often anatomically shaped (hand-specific) for a better fit and reduced hand fatigue during long procedures.'
+          ],
+          specifications: [
+            'Dimensions:	Standardized length and width measurements for proper fit.',
+            'Force at Break (Tensile Strength):	The minimum force required to break the glove material, indicating durability.',
+            'Chemical & Chemo Resistance:	Some nitrile and neoprene gloves are specifically tested and rated for resistance to chemotherapy drugs and various chemicals/solvents.',
+            'Thickness:	Measured in mil or mm, typically at the finger, palm, and cuff.'
+          ]
+        },
+        {
+          id: 'thermal-paper',
+          name: 'Thermal Paper Roll',
+          category: 'Medical Consumables',
+          image: '/images/Thermal paper rolls.jpeg',
+          description: 'Thermal paper rolls are a specialized printing medium known for their inkless, fast, and low-maintenance operation, which are primarily defined by their physical dimensions (width, diameter, and core size) and the properties of their heat-sensitive coating.',
+          features: [
+            'Inkless Printing: Thermal paper has a heat-sensitive chemical coating that changes color (typically to black) when exposed to heat from a thermal printhead, eliminating the need for ink, ribbons, or toner.',
+            'Fast and Quiet Operation: The direct thermal printing process is significantly faster and quieter than impact printing, making it ideal for high-volume, customer-facing environments like retail checkouts.',
+            'Cost-Effectiveness: While the paper itself may be slightly more expensive than plain paper, the lack of ongoing costs for ink or maintenance results in a lower total cost of ownership over time.',
+            'Image Clarity and Durability: High-quality thermal paper produces crisp, clear, and smudge-free prints. The longevity of the printed image varies, with standard grades lasting around 5 years and premium/archival grades lasting 10-25 years under proper storage conditions.',
+            'Variety and Versatility: Available in various grades (standard, premium, top-coated, synthetic, BPA-free) to suit different applications, from short-term receipts to durable medical charts and outdoor labels.'
+          ],
+          specifications: [
+            'Paper Width:	The physical width of the roll, which must match the printers capacity exactly.',
+            'Roll Diameter:	The overall outer diameter of the roll, which affects how much paper it holds and if it fits in the printer cavity.',
+            'Core Size:	The internal diameter of the cardboard or plastic tube the paper is wound around.',
+            'Paper Weight (GSM):	Grams per square meter, indicating the papers thickness and durability.'
+          ]
+        }
+      ],
+      dental: [
+        {
+          id: 'dental-chair',
+          name: 'Dental Chair Unit',
+          category: 'Dental Equipment',
+          image: '/images/dental chair.jpg',
+          description: 'A dental chair unit is a comprehensive system featuring an adjustable patient chair and integrated delivery systems for instruments, lighting, and suction. Key specifications involve ergonomics, power, and safety standards, ensuring efficiency for the dentist and comfort for the patient.',
+          features: [
+            'Adjustable Positioning: The chair offers motorized adjustments (via foot control or control panel) for height, backrest angle, and seat tilt to achieve optimal positioning for different procedures and patients. Features often include pre-set memory positions for efficiency and an emergency stop function for safety.',
+            'Integrated Delivery System: This system supplies air, water, and power to various tools via an instrument tray.',
+            'Suction System: Includes strong (HVE) and weak (saliva ejector) suction handles to remove debris and saliva from the oral cavity.',
+            'Operation Light: An adjustable, shadowless LED light source with variable intensity and color temperature settings to provide clear illumination of the oral cavity. Some models feature touchless or voice controls for hygiene.',
+            '3-Way Syringe: Delivers a controlled stream of air, water, or a spray mist for cooling, cleaning, and drying.'
+          ],
+          specifications: [
+            'Chair Height:	Adjustable from approximately 18 inches (45 cm) to 30 inches (76 cm) from the ground',
+            'Chair Length:	When fully extended, typically 72 inches (183 cm) to 80 inches (203 cm)',
+            'Weight Capacity:	Standard chairs support 300 lbs (136 kg) to 450 lbs (204 kg); bariatric models offer higher capacities',
+            'Safety Certifications:	Should conform to standards like CE or USFDA approval and IEC-60601 for electrical safety'
+          ]
+        },
+        {
+          id: 'apex-locator',
+          name: 'Apex Locator',
+          category: 'Dental Equipment',
+          image: '/images/apex locator.PNG',
+          description: 'An apex locator is a crucial endodontic device used to precisely measure the length of a root canal by utilizing the electrical properties (impedance/resistance) of surrounding tissues.',
+          features: [
+            'Automatic Calibration: Most advanced models include an automatic calibration feature, which ensures consistent and reliable measurements without the need for manual zero adjustment before each use.',
+            'Integrated Systems: Many apex locators can be integrated with endodontic motors for simultaneous length measurement and canal preparation, sometimes featuring automatic stop or reverse functions when the apex is reached.',
+            'Rechargeable and Wireless Options: Devices often come with long-lasting, rechargeable lithium-ion batteries and power-saving modes. Some newer models offer wireless operation and magnetic induction charging for increased portability and convenience.',
+            'User-Friendly Interface and Ergonomics: Features such as adjustable viewing angles, gyroscopic screens (which auto-adjust the display orientation), and simple, one-button operations enhance ease of use.',
+            'Autoclavable Accessories: Key components that come into contact with the patient, such as the lip clips, file clips, and measuring files/probes, are typically autoclavable to ensure effective infection control.'
+          ],
+          specifications: [
+            'Display: High-resolution color LCD or TFT touchscreen (e.g., 3.5" to 4.5" screen size).',
+            'Dimensions & Weight: Compact and lightweight design, often weighing around 300g–350g for the main unit.',
+            'Operating Conditions: Designed for standard clinic environments with specific temperature (e.g., 5°C to 40°C) and humidity requirements.',
+            'Battery: Rechargeable lithium-ion battery (typically 3.7V, 750mAh to 1500mAh capacity).'
+          ]
+        },
+        {
+          id: 'dental-xray',
+          name: 'Dental X-ray',
+          category: 'Dental Equipment',
+          image: '/images/dental xray.jpeg',
+          description: 'Dental X-ray systems are diagnostic tools that use low doses of ionizing radiation to create images of the teeth, bones, and soft tissues in the mouth.',
+          features: [
+            'Low Radiation Dose: Modern digital systems significantly reduce radiation exposure compared to traditional film-based methods (by up to 90%).',
+            'Image Enhancement: Digital systems allow for post-acquisition image processing, including adjusting contrast, brightness, and sharpness, and using filters for enhanced diagnostic quality.',
+            'Image Receptors: They use either traditional X-ray film or digital sensors (CCD or PSP plates) that feed images directly to a computer for immediate viewing.',
+            'Maneuverability: Equipment often features stable, long-reach articulating arms (for wall-mounted units) or portable, lightweight designs (for handheld units) for accurate positioning.',
+            'Automated Controls: Modern units feature micro-controller-based digital timers and preset exposure settings (e.g., for different patient sizes or film speeds) to ensure the minimum necessary exposure.'
+          ],
+          specifications: [
+            'Tube Voltage (kVp):	Controls the penetrating power (quality) of the X-ray beam. A range of 60-70 kVp is common for high-contrast images (good for detecting cavities), while higher kVp (~90 kVp) provides lower contrast (more shades of gray, good for periodontal disease).',
+            'Tube Current (mA):	Controls the number of X-rays produced (quantity or density). Typical ranges are 3.5 to 8 mA in intraoral units.',
+            'Exposure Time:	The duration of the X-ray burst, precisely controlled by a digital timer (e.g., from 0.01s to 4.00s) to limit patient dose.',
+            'Focus-to-Skin Distance:	A minimum distance of 20 cm (approx. 8 inches) is recommended to minimize magnification and ensure better image quality.'
+          ]
+        },
+        {
+          id: 'panoramic-xray',
+          name: 'Panoramic X-ray',
+          category: 'Dental Equipment',
+          image: '/images/panoramic.jpeg',
+          description: 'Panoramic X-rays capture a broad, two-dimensional view of the entire mouth using rotational technology and a low dose of radiation. Key features include extraoral positioning and a focal trough mechanism, while typical specifications involve a range of kV and mA settings.',
+          features: [
+            'Broad Coverage: A single image captures the entire maxilla (upper jaw), mandible (lower jaw), all teeth, maxillary sinuses, and the temporomandibular joints (TMJs).',
+            'Extraoral Technique: The X-ray source and image detector rotate around the patients head, meaning nothing is placed inside the patients mouth.',
+            'Focal Trough (Image Layer): The machine creates a specific curved, three-dimensional zone of sharpness. Structures within this layer are well-defined, while those outside are blurred, magnified, or distorted.',
+            'Low Radiation Dose: Compared to a full-mouth series of intraoral X-rays or some CT scans, panoramic X-rays expose the patient to a relatively low dose of ionizing radiation.',
+            'Digital Imaging Capability: Modern machines use digital sensors (CCD or CMOS) that allow for immediate image preview, post-processing enhancements (adjusting contrast, brightness), and electronic storage.'
+          ],
+          specifications: [
+            'X-ray Generator: High-frequency generators are common, optimizing exposure and reducing dose.',
+            'Tube Voltage (kVp): Typically ranges from 60 kV to 90 kV, often automatically adjusted based on the patients anatomy.',
+            'Focal Spot Size: A small focal spot (e.g., 0.4 mm to 0.8 mm) is used to produce clearer images.',
+            'Magnification: The image generally has an inherent, non-uniform magnification of approximately 10% to 30%, which means linear measurements can be unreliable for precise surgical planning without additional tools or software compensation.'
+          ]
+        },
+        {
+          id: 'endomotor',
+          name: 'Endomotor',
+          category: 'Dental Equipment',
+          image: '/images/Endomotor.jpeg',
+          description: 'Endomotors are specialized dental devices used for root canal treatments, featuring essential functionalities like controlled speed and torque, auto-reverse safety mechanisms, and compatibility with various file systems.',
+          features: [
+            'Adjustable Speed and Torque: Dentists can customize the rotational speed (RPM, generally 100-1500 rpm) and torque (Ncm, generally 0.4-5.0 Ncm) settings to suit different clinical needs and specific file system requirements.',
+            'Auto-Reverse/Stop: When the load on the file exceeds a preset torque limit, the motor automatically reverses or stops to prevent file breakage inside the canal and protect the patients tooth anatomy.',
+            'Apical Slow Down/Action: The motor automatically slows down or stops as the file approaches the apical foramen (tip of the root) when used with an integrated apex locator, reducing the risk of over-instrumentation.',
+            'Operating Modes: Most endomotors offer multiple working modes, including continuous rotation, reciprocating motion (alternating forward and reverse movement), and reverse rotation, allowing versatility for different clinical techniques.',
+            'Sterilization: The contra-angle handpieces are typically autoclavable (up to 135°C) to ensure high standards of hygiene and prevent cross-contamination.'
+          ],
+          specifications: [
+            'Speed Range:	100 rpm – 1500 rpm (some up to 3000 rpm)',
+            'Battery Type:	Rechargeable Lithium-ion/polymer (e.g., 3.7V/2000mAh)',
+            'Display:	LCD or OLED screen.',
+            'Weight:	Handpiece typically 100g - 250g (ergonomic, lightweight).'
+          ]
+        },
+        {
+          id: 'suction-machine',
+          name: 'Suction Machine',
+          category: 'Dental Equipment',
+          image: '/images/suction machine.jpeg',
+          description: 'Dental suction machines are available as central or portable systems, with key features including high flow rates (liters per minute), specific vacuum pressure levels (mmHg or kPa), and hygiene features like advanced filtration and auto-disinfection cycles.',
+          features: [
+            'Wet vs. Dry Systems: Dry systems are the modern standard, using an air-liquid separator to isolate waste and eliminate water consumption, offering better hygiene and lower maintenance.',
+            'Automatic Operation: Many models feature auto-start sensors that activate the system when the suction tip is removed, and automatic drainage/flushing systems for hygiene and ease of use.',
+            'Noise Level: Noise-dampened motors are a common feature to enhance patient comfort, with many modern systems operating below 60 dB, some as low as <45 dB.',
+            'Ergonomics and Design: Portable units are compact and lightweight, often on wheels for mobility, while central systems are permanently plumbed into the building.',
+            'Filtration Systems: Modern units often include multi-stage particulate separation (cyclonic, gravitational, membrane) with HEPA filters or UV sterilization options to capture aerosols and eliminate pathogens, which is crucial for infection control.'
+          ],
+          specifications: [
+            'Suction Power / Flow Rate:	Saliva ejectors: 20-30 L/min. High-Volume Evacuators (HVE): 100+ L/min. Central systems can reach 1,200+ L/min.',
+            'Vacuum Pressure:	Ranges from 200-800 mmHg (approx. -26 kPa to -106 kPa), ensuring optimal strength without tissue trauma.',
+            'Power Input:	Typically 110V/220V AC, 50/60 Hz, with power consumption ranging from a few hundred watts up to 1500W+ for central systems.',
+            'Dimensions & Weight:	Portable units are compact and can weigh around 32 kg, while central systems are larger and heavier (e.g., 48 kg or more).'
+          ]
+        },
+        {
+          id: 'dental-autoclave',
+          name: 'Dental Autoclave',
+          category: 'Dental Equipment',
+          image: '/images/dental autoclave.jpeg',
+          description: 'Dental autoclaves use high-pressure steam (typically 121°C to 134°C at 15-30 psi) to eliminate microorganisms from instruments, featuring specific functions and technical parameters essential for infection control and regulatory compliance.',
+          features: [
+            'Vacuum Technology: Class B autoclaves, the standard for dentistry, utilize pre- and post-vacuum pumps to remove all air from the chamber, allowing steam to penetrate hollow and porous instruments (e.g., handpieces) and ensuring effective drying.',
+            'Multiple Sterilization Cycles: They offer various pre-programmed and often user-defined cycles for different load types (solid, hollow, porous, wrapped, unwrapped) and urgent needs (flash sterilization).',
+            'Drying Function: An integrated or pulsating post-vacuum drying system is crucial to remove moisture from instruments, preventing rust and recontamination.',
+            'User-Friendly Interface: Modern units feature digital displays or touchscreens, often multi-language, to monitor temperature, pressure, time, and cycle status in real-time, simplifying operation and reducing error.',
+            'Safety Mechanisms: Essential safety features include a door interlock system (prevents opening under pressure), over-temperature and over-pressure protection, pressure relief valves, and automatic shut-off.'
+          ],
+          specifications: [
+            'Sterilization Temperature:	Typically 121°C (250°F) and 134°C (273°F) options.',
+            'Material Compatibility:	Designed for high-temperature and high-pressure resistant items including wrapped/unwrapped instruments, some plastics, and porous loads.',
+            'Compliance:	Should meet international standards such as ISO 13485, CE certification, and EN 13060 for Class B units.',
+            'Drying Time:	Varies by cycle and model, typically part of the overall cycle time.'
+          ]
+        },
+        {
+          id: 'light-cure',
+          name: 'Light Cure',
+          category: 'Dental Equipment',
+          image: '/images/light cure.jpeg',
+          description: 'Light cure units for dental use feature key specifications such as high light intensity (typically 1000-2500 mW/cm²), a specific wavelength range (commonly 420-490 nm, or broader for polywave lights), and various curing modes to ensure effective and safe polymerization of dental materials.',
+          features: [
+            'Light Source: Modern units primarily use LED (Light-Emitting Diode) technology, which is more energy-efficient and generates less heat than older halogen systems.',
+            'Cordless Design: Most contemporary light cure devices are cordless and battery-operated (usually rechargeable lithium-ion) for enhanced mobility and ease of use in the oral cavity.',
+            'Standard Mode: For general applications with moderate intensity.',
+            'Ergonomics: Units are designed to be lightweight and compact, often with a pen-style or gun-type grip and a 360° rotatable head for better access to posterior regions.',
+            'Safety Features: Built-in features include protective light shields (often orange-tinted) for eye safety, heat management systems to prevent pulpal damage, and automatic power-off after a period of inactivity.'
+          ],
+          specifications: [
+            'Wavelength Range:	420–490 nm (monowave) or 385–515 nm (polywave/broad spectrum).',
+            'Curing Time:	1–40 seconds per increment, depending on mode, material, and intensity.',
+            'Battery:	Rechargeable Li-ion (e.g., 800mAh to 2200mAh capacity).',
+            'Weight:	Lightweight (often under 200g for pen-style).'
+          ]
+        },
+        {
+          id: 'hand-piece',
+          name: 'Hand Piece',
+          category: 'Dental Equipment',
+          image: '/images/Dental Handpieces.jpeg',
+          description: '"Hand piece" is a general term most commonly referring to a dental handpiece, which is a precision instrument used with various rotating tools (burs) for cutting, polishing, and drilling in dental procedures. Key features and specifications vary significantly depending on the type and intended use (e.g., high-speed vs. low-speed, air-driven vs. electric).',
+          features: [
+            'Noise Level:	Air-driven models are generally louder (up to 92 dB); electric handpieces operate more quietly, improving patient and practitioner comfort.',
+            'Bur Chuck Type:	Mechanism for holding the bur; commonly push-button auto-chucks or twist chucks.',
+            'Autoclavability:	Must withstand repeated sterilization cycles (up to 135°C) to meet hygiene standards.',
+            'Ergonomics:	Lightweight, balanced design with specialized coatings (like DURACOAT or DURAGRIP) to reduce hand and wrist fatigue.',
+            'Body Material:	Common materials include stainless steel and titanium (lighter, highly durable, biocompatible, autoclavable).'
+          ],
+          specifications: [
+            'Power Source:	Air-driven (turbine) or electric motor.',
+            'Speed (RPM)	High-speed: 300,000–450,000 RPM (for cutting enamel); Low-speed: 5,000–40,000 RPM (for polishing, decay removal).',
+            'Torque:	The cutting power/force under load. Electric models offer higher, more consistent torque compared to air-driven models which may stall under heavy load.',
+            'Head Size:	Varies from standard to "mini" for better posterior access; larger heads generally offer more power/torque.'
+          ]
+        },
+        {
+          id: 'ultrasonic-cleaner',
+          name: 'Ultrasonic Cleaner',
+          category: 'Dental Equipment',
+          image: '/images/ultrasonic cleaner.jpeg',
+          description: 'Ultrasonic cleaners use high-frequency sound waves to create microscopic bubbles (cavitation) in a liquid bath, which implode to clean immersed items thoroughly, especially in hard-to-reach areas. Key features and specifications vary by model, from small benchtop units to large industrial systems.',
+          features: [
+            'Tank Size/Capacity:	Ranges from less than a liter for small items to hundreds of gallons for industrial use. Tanks are typically made of corrosion-resistant stainless steel.',
+            'Ultrasonic Frequency:	Measured in kilohertz (kHz). Lower frequencies (20-25 kHz) produce larger, more aggressive cavitation bubbles for heavy-duty cleaning of rugged parts. Higher frequencies (37-80 kHz and above) create smaller, gentler bubbles for delicate items or intricate details. Some models offer dual or multiple frequencies.',
+            'Power Output:	The power and watt density (watts per gallon) determine cleaning intensity. Higher power levels (e.g., 100+ watts/gallon) are used for stubborn contaminants and faster cleaning.',
+            'Heating Function:	Most effective cleaning solutions work best when heated, typically to 50°C to 70°C (122°F to 158°F). Units feature adjustable thermostats and auto shut-off for safety.',
+            'Control Interface:	Options include simple mechanical timers and heaters, or advanced digital/microprocessor controls with LED/LCD displays for precise control over time, temperature, and modes.'
+          ],
+          specifications: [
+            'Safety: Never use flammable liquids directly in the ultrasonic tank, as the process increases temperature and vaporization risks.',
+            'Accessories:	Typically include a stainless steel basket and lid. Baskets prevent items from contacting the tank bottom, which can damage both the items and the units transducers.',
+            'Operating Modes:	Advanced units may offer specific modes: Degas (removes dissolved air from fresh solution to improve efficiency), Sweep (varies frequency to ensure uniform cleaning and prevent standing waves), Pulse (provides bursts of extra power for stubborn dirt), and Eco (gentler, quieter cleaning).'
+          ]
+        },
+        {
+          id: 'ultrasonic-scaler',
+          name: 'Ultrasonic Scaler',
+          category: 'Dental Equipment',
+          image: '/images/ultrasonic scaler.jpeg',
+          description: 'Ultrasonic scalers are dental instruments that use high-frequency vibrations to remove plaque, calculus (tartar), and stains from teeth surfaces. They offer a more efficient and often more comfortable alternative to manual scaling for both patients and practitioners.',
+          features: [
+            'Automatic Frequency Tracking: This ensures the machine consistently operates at the optimal vibration frequency for stable and efficient performance, reducing potential tooth damage.',
+            'Multiple Functions/Modes: Most modern scalers offer various operational modes, such as General Scaling (G), Periodontal (Perio, P) for deep cleaning below the gum line, and Endodontic (Endo, E) for root canal treatments.',
+            'Detachable and Autoclavable Handpieces: The handpiece, and often the tips, can be sterilized at high temperatures (typically 121°C to 135°C) and pressure (0.22 MPa) to prevent cross-contamination.',
+            'Water Irrigation System: A steady stream of water is used to cool the rapidly vibrating tip and flush away debris. Many advanced units offer an auto-water supply function that can use clinical fluids like chlorhexidine or sodium hypochlorite to enhance treatment efficacy.',
+            'LED Illumination: Integrated LED lights on the handpiece enhance visibility in the treatment area, improving accuracy and reducing eye fatigue.'
+          ],
+          specifications: [
+            'Output Power:	3W to 20W (adjustable power settings for different tasks).',
+            'Power Input:	AC 100V–240V, 50Hz/60Hz (standard electrical compatibility).',
+            'Water Pressure:	0.01 MPa to 0.5 MPa (adjustable flow rate)',
+            'Tip Motion:	Linear (piezoelectric) or elliptical (magnetostrictive).'
+          ]
+        },
+        {
+          id: 'whitening-machine',
+          name: 'Teeth Whitening Machine',
+          category: 'Dental Equipment',
+          image: '/images/twm.jpeg',
+          description: 'Teeth whitening machines use LED light technology to accelerate the breakdown of stains caused by coffee, tea, smoking, and aging, offering various features for effective and convenient whitening. Both professional-grade and at-home devices are available, with differing power outputs and designs.',
+          features: [
+            'LED Light Technology: Most modern machines use high-power blue LED cold light to activate the whitening gel (usually containing hydrogen peroxide or carbamide peroxide) and speed up the oxidation of pigments in the teeth. Some advanced models also include red light therapy for gum care and sensitivity reduction.',
+            'Adjustable Timer: Users or professionals can set the treatment time, typically ranging from 1 to 30 minutes, to suit individual needs and sensitivity levels.',
+            'Multiple Light Modes: Advanced devices often offer different light source options, such as blue only, red only, or a combination of both, allowing for customized treatment that balances whitening and gum health.',
+            'Adjustable Design: Many professional-grade machines feature an adjustable goose-pipe design or a flexible, rotating arm, allowing for angle and height modifications for optimal positioning and user comfort.',
+            'Portability/Mobility: Larger machines may be floor-standing with universal wheels for easy movement in a clinic or salon. Compact, wireless, and rechargeable mouthpiece designs are popular for at-home and travel use.'
+          ],
+          specifications: [
+            'Light Source:	High-power LEDs (e.g., 6, 8, or more bulbs).',
+            'Light Wavelength:	Typically blue light in the 460-490 nm range; some also use red (620nm) or purple (395nm).',
+            'Power Source:	Corded electric (AC 100-240V for global use).',
+            'Treatment Time:	Adjustable timer, often 1-30 minutes per session.'
+          ]
+        },
+        {
+          id: 'compressor',
+          name: 'Compressor',
+          category: 'Dental Equipment',
+          image: '/images/Dental compressor.jpeg',
+          description: 'Dental air compressors are specialized, medical-grade devices with essential features like oil-free operation, advanced air drying and filtration systems, and low noise levels to ensure patient safety and protect sensitive instruments.',
+          features: [
+            'Oil-Free Operation: This is a critical feature, as it eliminates the risk of oil residue contaminating the air supply, which is vital for patient health and prevents damage to precision dental handpieces and equipment.',
+            'Low Noise Level: Designed with sound-dampening technology or soundproof housing, these compressors operate quietly (often under 60 dB) to maintain a calm and comfortable clinical environment for both patients and staff.',
+            'Reliability and Duty Cycle: Dental compressors are engineered for high reliability, with many offering a 100% duty cycle, meaning they can run continuously if needed without overheating or shutting down.',
+            'Smart Technology (Optional): Modern units may include smart features like on-board sensors, touchscreen displays, and app connectivity for remote monitoring, diagnostics, and maintenance scheduling.',
+            'Air Drying System: Integrated membrane or desiccant dryers remove moisture from the compressed air to a specific dew point (e.g., as low as -20°C or -40°C). This prevents corrosion within the system and inhibits microbial growth.'
+          ],
+          specifications: [
+            'Power Output:	1 to 5 HP (Horsepower)',
+            'Max Pressure:	Typically 8 bar (around 115-145 PSI).',
+            'Air Flow:	Varies by model (e.g., 70 L/min to over 200 L/min).',
+            'Noise Level:	50 dB(A) to 68 dB(A) (often lower with sound insulation).'
+          ]
+        },
+        {
+          id: 'portable-dental-chair',
+          name: 'Portable Dental Chair',
+          category: 'Dental Equipment',
+          image: '/images/dental chair uni.jpeg',
+          description: 'Portable dental chairs are characterized by their lightweight, foldable design and a balance of portability with clinical functionality, featuring adjustable positioning and durable, easy-to-clean materials.',
+          features: [
+            'Portability & Weight: Designed to be lightweight (often between 20-50 lbs or 9-23 kg) and compact when folded, many models include a carrying case or retractable handle for easy transport.',
+            'Durability & Stability: Constructed with robust, high-strength materials like rolled steel or aluminum alloy frames, ensuring stability and safety during procedures, even on uneven surfaces.',
+            'Hygiene & Upholstery: The upholstery is typically made from durable, easy-to-clean materials like Naugahyde or PU leather, designed to be aseptic and resistant to microbes to uphold high standards of cleanliness.',
+            'Integrated/Optional Accessories: Many chairs come with or can integrate accessories to create a full mobile operatory, such as LED operation lights, instrument trays, spittoons (waste basins), and connectivity for portable dental units (including built-in air compressors, suction systems, and syringes).',
+            'Headrest: Often removable and adjustable for optimal patient positioning.'
+          ],
+          specifications: [
+            'Seat Height: Multiple positions, often ranging from approximately 8" to 27" (20 cm to 68 cm) from the ground.',
+            'Weight Capacity:	Most models safely support between 300 lbs (136 kg) to 400 lbs (181 kg).',
+            'Frame Material:	High-strength aluminum alloy or rolled steel is commonly used for durability and lightness.',
+            'Upholstery Material:	PU leather or vinyl (e.g., Naugahyde) are standard, offering easy cleaning and disinfection.'
+          ]
+        },
+        {
+          id: 'portable-dental-xray',
+          name: 'Portable Dental Xray',
+          category: 'Dental Equipment',
+          image: '/images/dntal xray.jpeg',
+          description: 'Portable dental X-ray machines are compact, handheld, and battery-operated devices that provide high-quality intraoral images with reduced radiation exposure compared to some traditional units.',
+          features: [
+            'Portability and Ergonomics: The primary feature is a lightweight (typically 1.5 kg to 3 kg) and compact, often "gun-type" or "camera-type," design that allows for easy, single-handed operation and transport between operatories or for mobile dentistry, humanitarian work, and hospital use.',
+            'Safety: Devices incorporate internal lead shielding and a backscatter shield (often a lead-lined cone) to protect the operator and patient by minimizing leakage and scattered radiation, meeting national and international safety standards.',
+            'High-Quality Imaging: They utilize high-frequency DC X-ray generators and a fine focal spot (commonly 0.4 mm) to produce sharp, high-resolution diagnostic images, reducing the chance of motion blur.',
+            'Digital Compatibility: Most portable units are compatible with various image receptors, including traditional film, phosphor plates (PSP), and modern digital intraoral sensors.',
+            'User-Friendly Interface: Features often include simple button controls, pre-programmed settings for different tooth types and patient sizes, and clear LCD or color touch screens.'
+          ],
+          specifications: [
+            'Tube Voltage:	60 kV – 70 kV (DC).',
+            'Focal Spot Size:	0.4 mm is common, some are 0.3 mm or 0.8 mm.',
+            'Exposure Time Range:	0.01 seconds – 2.0 seconds (variable).',
+            'Frequency:	High-frequency (e.g., 30 kHz - 200 kHz).'
+          ]
+        }
+      ],
+      radiology: [
+        {
+          id: 'xray-machine',
+          name: 'Digital X-ray Machine',
+          category: 'Radiology Equipment',
+          image: '/images/digital xray.jpeg',
+          description: 'Digital X-ray machines offer numerous advanced features and specific technical specifications that distinguish them from conventional analog systems, primarily focusing on enhanced image quality, improved workflow, and reduced patient radiation dose.',
+          features: [
+            'Immediate Image Viewing: Images are available for review on a monitor within seconds after exposure, significantly speeding up the diagnostic process and overall workflow.',
+            'Reduced Radiation Dose: Digital systems can capture high-quality images with lower radiation exposure for patients compared to traditional film-based radiography.',
+            'Superior Image Quality and Processing: Advanced software automatically optimizes and enhances image quality, allowing doctors to adjust brightness, contrast, zoom, and add annotations to better visualize details like hairline fractures or soft tissues within the same image.',
+            'DICOM 3.0 Compatibility: Full integration with hospital networks and information systems (PACS/RIS) enables seamless image storage, retrieval, printing, and sharing of patient records across departments.',
+            'Portability and Maneuverability: Many models, especially mobile units, are designed to be compact, lightweight, and easy to maneuver in congested areas like ICUs and operating rooms. Some even feature motorized movements and collapsible columns.'
+          ],
+          specifications: [
+            'Power Output: Typically ranges from 32kW to 80kW (or more for high-end systems).',
+            'Frequency: High frequency (usually 50kHz to 200kHz) for stable and high-quality X-ray output.',
+            'kV Range: 40 kV to 150 kV.',
+            'mA Range: 10 mA to 1000 mA (depending on power).'
+          ]
+        },
+        {
+          id: 'ultrasound',
+          name: 'Ultrasound System',
+          category: 'Radiology Equipment',
+          image: '/images/ultrasound system.jpeg',
+          description: 'Ultrasound systems are complex medical devices with varied features and specifications depending on their intended use (e.g., general imaging, cardiology, obstetrics). Key features relate to image quality, workflow efficiency, and connectivity, while specifications cover hardware, software, and physical dimensions.',
+          features: [
+            '2D, 3D, and 4D Imaging: Provides static 2D images, still 3D images, and real-time moving 3D images (4D), especially useful in obstetrics for realistic views of a fetus.',
+            'Doppler Ultrasound: Uses the Doppler effect to visualize and measure blood flow speed and direction. Includes Color Doppler, Power Doppler, and Pulsed/Continuous Wave Doppler.',
+            'Automation: Features like Auto Image Optimization and AI-based measurements (e.g., auto OB measurements) help standardize exams and reduce keystrokes, saving time.',
+            'User Interface: Intuitive control panels, often with touchscreens and user-programmable parameters, improve ease of use.',
+            'Ergonomics: Adjustable monitors (tilt/swivel), height-adjustable control panels, and lightweight probes are designed for user comfort and reduced physical strain.'
+          ],
+          specifications: [
+            'Monitor:	High-resolution medical-grade LED or OLED monitors (e.g., 12" to 27"), often with wide viewing angles and tilt/swivel capabilities.',
+            'System Type:	Available as full-size console units or compact, portable/hand-carried devices, including handheld wireless probes that connect to a smartphone/tablet.',
+            'Power:	Operates on standard AC power, often with a built-in rechargeable battery for portable use or backup (e.g., 30 minutes to 2+ hours of operation).',
+            'Safety & Standards:	Compliance with international safety standards like US FDA or European CE certification and IEC regulations is standard.'
+          ]
+        },
+        {
+          id: 'ct-scan',
+          name: 'CT Scan',
+          category: 'Radiology Equipment',
+          image: '/images/CT scan.jpeg',
+          description: 'Computed tomography (CT) scanners are sophisticated medical imaging devices with a range of technical specifications and features designed to produce detailed, cross-sectional images of the body using X-rays and computer technology.',
+          features: [
+            'Gantry and Table: The gantry is the large, doughnut-shaped ring containing the X-ray tube and detectors. The patient lies on a motorized table that moves continuously or incrementally through the gantry during scanning.',
+            'X-ray Tube: This component generates the X-rays. Key specifications include the heat capacity (measured in Mega Heat Units, or MHU), kilovoltage peak (kVp, typically 80-140 kVp) and tube current (mA), which affect image intensity and patient radiation dose.',
+            'Detectors: Modern scanners use multi-row detector arrays (e.g., 16, 64, 128, 256, or 320 slices) that capture the X-rays after they pass through the patient. Higher slice counts enable faster scans and more detailed 3D reconstructions.',
+            'Hounsfield Units (HU): Image pixels are assigned a HU value based on tissue density and X-ray attenuation. Water is the standard reference point at 0 HU, air is -1000 HU, and dense bone can be up to +1000 HU.',
+            'Pitch: The ratio of table movement per gantry rotation to the beam width. A pitch around 1 ensures continuous coverage, while higher pitches reduce scan time and dose but may affect resolution.'
+          ],
+          specifications: [
+            'Multiplanar Reformation (MPR) and 3D Imaging: Raw data can be reformatted into various planes (axial, coronal, sagittal) or stacked to create detailed 3D images and volume renderings, which aid in surgical planning and diagnosis.',
+            'Contrast Enhancement: Contrast agents (iodine- or barium-based dyes) administered orally or intravenously make specific tissues, organs, or blood vessels more visible.',
+            'Specialized Scans: Advanced features include high-resolution CT (HRCT) for lung disease, CT angiography (CTA) for blood vessels, and hybrid PET/CT scanners that combine anatomical and metabolic imaging.',
+            'Motion Artifact Reduction: Features like faster gantry rotation (helical/spiral CT) and cardiac gating help minimize image blurring from patient or organ movement (e.g., heartbeats).'
+          ]
+        },
+        {
+          id: 'mri-scan',
+          name: 'MRI Scan',
+          category: 'Radiology Equipment',
+          image: '/images/MRI.jpeg',
+          description: 'Magnetic Resonance Imaging (MRI) scanners use powerful magnets, radio waves, and computers to produce detailed images of the bodys internal structures, particularly soft tissues. They do not use ionizing radiation, which distinguishes them from CT scans and X-rays.',
+          features: [
+            'T1-weighted: Excellent for anatomical detail; fat appears bright, and water/fluid appears dark.',
+            'FLAIR (Fluid Attenuated Inversion Recovery): Suppresses the signal from normal free water (like cerebrospinal fluid), making abnormalities near fluid spaces, such as multiple sclerosis plaques, more visible.',
+            'DWI (Diffusion-Weighted Imaging): Measures the movement of water molecules and is crucial for detecting acute strokes within minutes of onset.',
+            'Functional MRI (fMRI): Measures brain activity by detecting changes in blood flow and oxygenation, useful for surgical planning.',
+            'Contrast Agents: Gadolinium-based contrast agents can be injected intravenously to enhance the visibility of specific tissues or abnormalities, such as tumors or inflammation, particularly on T1-weighted images.'
+          ],
+          specifications: [
+            'Low-field systems (e.g., 0.2T to 1.2T) are often used in open MRI designs and provide more comfort for claustrophobic or larger patients, but generally produce images with less detail than high-field systems.',
+            'High-field clinical standard systems (1.5T and 3T) are the most common in clinical use, offering high resolution and faster imaging.',
+            'Ultra-high-field systems (7T and above) are generally used for research and highly specialized clinical applications, providing exceptional detail.',
+            'Closed-bore: The traditional, narrow, tube-like design (typically 60 cm diameter) offers superior image quality due to a more uniform magnetic field but can cause anxiety in some patients.'
+          ]
+        },
+        {
+          id: 'xray-film-printer',
+          name: 'Xray Film Printer',
+          category: 'Radiology Equipment',
+          image: '/images/xray film printer.jpeg',
+          description: 'X-ray film printers, also known as medical dry imagers, are specialized devices that produce diagnostic images without wet chemical processing, using either direct thermal or inkjet technology.',
+          features: [
+            'Dry Technology: Eliminates the need for liquid chemicals and darkrooms, making the process faster, more convenient, and environmentally friendly.',
+            'Networking: Equipped with standard network protocols, such as the DICOM 3.0 connection over Ethernet (RJ-45) or USB interfaces, for seamless integration with hospital imaging modalities (CT, MRI, DR, CR, etc.) and PACS accessibility.',
+            'Film Handling: Feature daylight-load film cartridges or trays with capacities of up to 100 or 200 sheets, supporting multiple film sizes (e.g., 8"x10", 10"x12", 11"x14", 14"x17").',
+            'Ease of Use: Often include front-loading operations, easy-to-read LCDs or touch screens, and automatic media recognition for user-friendly operation and maintenance.',
+            'Throughput: Designed for time-critical applications, with some models capable of printing up to 70-80 sheets per hour for a 14"x17" film.'
+          ],
+          specifications: [
+            'Print Technology: Direct Thermal or Inkjet Printing.',
+            'Grayscale Contrast Resolution: 256 gray levels (8-bit) to 14 bits.',
+            'Power Supply: Worldwide compatibility (e.g., AC 100-240V, 50/60Hz).',
+            'Film Base: Blue or clear PET film, often waterproof and scratch-resistant.'
+          ]
+        },
+        {
+          id: 'digital-c-arm',
+          name: 'Digital C Arm',
+          category: 'Radiology Equipment',
+          image: '/images/c arm.jpeg',
+          description: 'Digital C-arm systems are highly specialized medical imaging devices used primarily in surgical and interventional procedures to provide real-time X-ray visualization. They feature a C-shaped arm that allows for flexible positioning around the patient.',
+          features: [
+            'Real-time Imaging: C-arms provide live fluoroscopic images, enabling surgeons to monitor procedure progress and make immediate, precise adjustments during surgery (e.g., bone alignment, implant or catheter placement).',
+            'Mobility & Maneuverability: Most C-arms are mobile units designed to be moved easily between operating rooms or departments, featuring wheels and motorized vertical/horizontal movements, orbital rotation, and swivel capabilities to achieve optimal imaging angles.',
+            'Dose Management: Modern systems incorporate advanced features to minimize radiation exposure to both patients and medical staff, such as pulsed fluoroscopy, low-dose modes, and Dose Area Product (DAP) meters.',
+            'Digital Image Processing: Images are captured and processed digitally (often 1k x 1k pixel resolution and 16-bit grayscale depth) with features like edge enhancement, image inversion, rotation, zooming, and noise reduction to improve clarity.',
+            'Connectivity: Systems typically support DICOM 3.0 standard networking for seamless integration with Hospital Information Systems (HIS), Radiology Information Systems (RIS), and Picture Archiving and Communication Systems (PACS).'
+          ],
+          specifications: [
+            'Detector Type:	Image Intensifier (II) (e.g., 9" or 12") or dynamic Flat Panel Detector (FPD) (e.g., 21x21 cm or 30x30 cm).',
+            'X-ray Generator:	High-frequency (50-100 kHz) monoblock generator, typically 3.5 kW to 25 kW power output',
+            'Anode Type:	Stationary or rotating anode for higher heat capacity and longer procedures.',
+            'Imaging Modes:	Continuous fluoroscopy, pulsed fluoroscopy, snapshot/digital radiography, and specialized modes like Digital Subtraction Angiography (DSA).'
+          ]
+        },
+        {
+          id: 'mobile-xray',
+          name: 'Mobile X-ray',
+          category: 'Radiology Equipment',
+          image: '/images/mobile xray.jpeg',
+          description: 'Mobile X-ray systems are characterized by their portability, integrated digital imaging capabilities, and powerful, high-frequency generators designed for point-of-care use.',
+          features: [
+            'Exceptional Mobility: Units are designed to be compact, lightweight, and easy to maneuver in crowded spaces like hospital wards, emergency rooms, or ICUs. Features often include a motorized drive, large wheels, and short wheelbases.',
+            'Advanced Imaging: Modern systems are fully digital, using wireless flat panel detectors (FPDs), often made with cesium iodide (CsI) or amorphous silicon technology, for high image quality and lower patient radiation dose compared to older CR systems.',
+            'Optimized Workflow & Usability: Features like self-explaining control panels, large touch-screen displays (up to 19 inches), and pre-set exposure programs streamline operation. Some units have an automatic, collapsible column to provide a clear line of sight for safe travel.',
+            'AI Integration & Image Processing: Many advanced systems include AI-powered image processing software for enhanced image clarity, specialized viewing options like bone suppression, and computer-aided detection (CAD) of conditions like pneumonia or pneumothorax.',
+            'Robust Power Systems: Units are typically battery-operated, featuring long-lasting lithium-ion batteries that allow for numerous images and extended travel on a single charge.'
+          ],
+          specifications: [
+            'Weight:	Highly portable units can be around 171 kg (377 lbs); some specific models are much lighter or heavier depending on features.',
+            'Detector Size:	Common sizes: 35 x 43 cm (14"x17") and 24 x 30 cm (10"x12").',
+            'Focal Spot:	Dual focus (e.g., 0.3/1.0 mm or 0.7/1.3 mm).',
+            'Tube Current (mA Range):	100 mA to 500 mA.'
+          ]
+        },
+       
+        {
+          id: 'lead-apron',
+          name: 'Lead Apron',
+          category: 'Radiology Equipment',
+          image: '/images/lead apron.jpeg',
+          description: 'Lead aprons are protective garments in medical settings with key features including varying lead equivalency thicknesses (typically 0.25 mm to 0.5 mm Pb), a range of core materials (lead, composite, or lead-free), and designs that cover vital organs to attenuate scatter radiation.',
+          features: [
+            'Regular Lead: Contains pure lead, offering high protection but is the heaviest option, potentially causing musculoskeletal strain with extended use.',
+            'Lead Composite: Blends lead with other lighter-weight metals (like tin, antimony, or bismuth) to reduce the overall weight by about 25% compared to pure lead, while maintaining protective qualities.',
+            'Lead-Free: Uses a combination of alternative heavy metals like barium, tungsten, and bismuth, completely without lead. These are the lightest options (up to 40% lighter than pure lead) and non-toxic, which is beneficial for long procedures and easier disposal.',
+            'Closure: Aprons typically use Velcro or clip fasteners. Some modern options feature magnetic closures for ease of use and hygiene.',
+            'Ergonomics: Features like padded shoulders, built-in elastic back-guards, and adjustable belts help distribute the weight evenly to prevent fatigue and musculoskeletal issues.'
+          ],
+          specifications: [
+            'Thickness: The most common range is 0.25 mm to 0.50 mm Pb equivalence. A 0.50 mm Pb apron is the industry standard for most procedures, as it can block up to 99% of scatter radiation, while 0.35 mm and 0.25 mm options are lighter and suitable for lower-exposure situations.',
+            'Coverage: Aprons should cover the front of the body from the throat to the knees and often include protection for the sides.',
+            'Accessories: Thyroid shields are critical additions to cover the highly sensitive thyroid gland, often providing 0.5 mm Pb protection, as the apron alone does not cover the neck area. Leaded eyewear and caps are also available for additional protection.',
+            'Wrap-around: Provides full protection to the front, back, and sides, ideal for long procedures where movement or turning is necessary.'
+          ]
+        },
+        {
+          id: 'lead-barrier',
+          name: 'Lead Barrier',
+          category: 'Radiology Equipment',
+          image: '/images/lead barrier.jpeg',
+          description: 'Lead barriers are primarily used for radiation protection in medical and research settings and feature specific specifications regarding their composition, lead equivalency, and mobility.',
+          features: [
+            'Radiation Shielding: The primary feature is the ability to attenuate X-rays and gamma rays due to leads high atomic number and density.',
+            'Mobility: Many barriers are mobile, equipped with heavy-duty, often locking, caster wheels for easy movement and precise positioning within a facility.',
+            'Viewing Windows: To allow personnel to observe patients or procedures safely, barriers often include transparent viewing panels made of high-quality lead glass or lead acrylic.',
+            'Durable Construction: They typically feature a sturdy frame (often steel or aluminum) and high-density, easy-to-clean body panels to ensure long functional life.',
+            'Customization: Manufacturers often offer various sizes, shapes, and lead equivalency options to meet specific facility requirements.'
+          ],
+          specifications: [
+            'Opaque Panels: Often provide 2.0 mm Pb equivalent protection, constructed with solid lead sheets between steel plates.',
+            'Viewing Windows: Range from 0.5 mm Pb equivalent for lead acrylic to 2.0 mm Pb equivalent for high-quality lead glass, depending on requirements.',
+            'Overall Range: Barriers can be available with lead equivalencies from 1mm up to 3mm for specialized applications.',
+            'Dimensions: Sizes vary widely, with common overall heights around 74–75 inches and widths varying to accommodate single or multiple users.'
+          ]
+        },
+        {
+          id: 'xray-film-viewer',
+          name: 'X-ray Film Viewer',
+          category: 'Radiology Equipment',
+          image: '/images/xray viewer.jpeg',
+          description: 'Modern X-ray film viewers, or negatoscopes, primarily use LED technology and are designed with specific features to facilitate accurate medical diagnosis.',
+          features: [
+            'Light Source: Modern viewers utilize bright, energy-efficient, and long-lasting LEDs (up to 100,000 hours of life) as the light source, which produce minimal heat and no UV emissions.',
+            'Brightness/Intensity Control: Most LED models feature variable intensity, often with digital dimming systems (e.g., 4,000 to over 10,000 lux or cd/m²) to adjust the light output based on film density and ambient light conditions.',
+            'Uniform Illumination: A primary feature is the uniform and diffuse illumination across the entire viewing surface, which ensures all parts of the radiograph can be analyzed clearly without glare or dark spots.',
+            'Automatic Film Activation: Many units include a sensor that automatically turns the light on when a film is inserted and off when it is removed or after a set period of inactivity, which increases efficiency and saves energy.',
+            'Panel Options: Viewers are available in single, double, triple, and quadruple panel configurations to allow for the simultaneous comparison of multiple films or large images.'
+          ],
+          specifications: [
+            'Light Source:	LED technology (long life: 60,000–100,000 hours).',
+            'Color Temperature:	"Daylight" white and light-blue, around 6500–9300 Kelvin, ideal for viewing X-rays, CTs, and MRIs.',
+            'Power Consumption:	Low, typically 15W (single panel) to 60W (quad panel).',
+            'Certifications:	Often include CE, ISO, IEC, and sometimes FDA approvals.'
+          ]
+        }
+      ],
+      icu: [
+         {
+          id: 'anesthesia-machine',
+          name: 'Anesthesia Machine',
+          category: 'ICU Equipment',
+          image: '/images/anesthesia machine.jpeg',
+          description: 'Anesthesia machines, or workstations, are complex medical devices integrating gas delivery, ventilation, and monitoring systems to safely maintain a patient under anesthesia',
+          features: [
+            'Gas Supply and Control: Machines connect to central hospital pipelines or use backup cylinders for oxygen (\(\text{O}_{2}\)), nitrous oxide (\(\text{N}_{2}\text{O}\)), and medical air. Safety systems like the Pin Index Safety System (PISS) for cylinders and Diameter Index Safety System (DISS) for pipelines prevent misconnection of gases.',
+            'lowmeters and Regulators: Pressure regulators reduce high supply pressures to a safe working pressure. Flowmeters (often digital or traditional rotameters) control the precise flow rates of each gas.',
+            'Vaporizers: These devices are calibrated to deliver a specific, controlled concentration of volatile anesthetic agents (e.g., Sevoflurane, Isoflurane) in vapor form. Modern systems use electronic vaporizers that offer temperature and flow compensation and on-screen control for enhanced precision.',
+            'Breathing Circuit: This system delivers the gas mixture to the patient and removes exhaled carbon dioxide using a \(\text{CO}_{2}\) absorber (soda lime canister) to allow for rebreathing of gases and low-flow anesthesia techniques.',
+            'Scavenging System: This active or passive system collects and removes waste anesthetic gases from the operating room environment.'
+          ],
+          specifications: [
+            'Hypoxic Mixture Prevention: Systems automatically ensure that the inspired oxygen concentration never falls below 21-25%.',
+            'Alarms: A three-level alarm system (visual and audible) alerts clinicians to critical issues like oxygen failure, high/low airway pressure, power failure, apnea, and low/high oxygen concentration.',
+            'Oxygen Flush: A high-flow oxygen flush (25-75 L/min) bypasses the vaporizers to provide pure oxygen in an emergency.',
+            'Battery Backup: Most modern machines include a built-in rechargeable battery to provide emergency power for at least 30-120 minutes during a power outage.'
+          ]
+        },
+{
+          id: 'ventillator',
+          name: 'Ventillator',
+          category: 'ICU Equipment',
+          image: '/images/ventillator.jpeg',
+          description: 'Ventilators feature a range of settings and safety components to provide respiratory support, including adjustable tidal volume, respiratory rate, and various ventilation modes like Volume Control (VC) and Pressure Control (PC).',
+          features: [
+            'Alarms: Audio and visual alarms are critical safety features that alert medical staff to issues such as high/low airway pressure, high/low minute volume, power failure, apnea, and system malfunctions.',
+            'Built-in Backup Power: Most units are equipped with internal rechargeable batteries to ensure continuous operation during power failures or patient transport.',
+            'Infection Control Measures: Components like autoclavable expiratory blocks, filters (bacterial/viral filters), and disposable patient circuits help maintain hygiene and prevent the spread of infection.',
+            'Mechanical Fail-Safe Valves: These safety features (e.g., anti-asphyxia valves) automatically open to allow the patient to breathe room air if the machine fails completely.',
+            'Pressure-Regulated Volume Control (PRVC): A hybrid mode that attempts to deliver a set tidal volume using the lowest possible pressure, adapting breath-by-breath to changing lung conditions.'
+          ],
+          specifications: [
+            'Tidal Volume (Vt): The amount of air delivered with each breath, usually set in milliliters (mL) based on the patients body weight.',
+            'Respiratory Rate (RR): The number of breaths the machine delivers per minute, typically adjustable from a few breaths to over 100.',
+            'Positive End-Expiratory Pressure (PEEP): The positive pressure maintained in the airways at the end of expiration to prevent the tiny air sacs (alveoli) from collapsing.',
+            'Fraction of Inspired Oxygen (FiO₂): The concentration of oxygen in the delivered gas mixture, adjustable from 21% (room air) to 100%.'
+          ]
+        }
+      ],
+      furniture: [
+        {
+          id: 'hospital-bed',
+          name: 'Hospital Bed',
+          category: 'Hospital Furniture',
+          image: '/images/hospital bed.jpeg',
+          description: 'Hospital beds feature adjustable positions (height, backrest, footrest), safety elements like side rails and lockable casters, and specific specifications such as weight capacity and standard dimensions, all designed for patient comfort and caregiver convenience.',
+          features: [
+            'Adjustable Positions: Most hospital beds offer the ability to raise and lower the head and foot sections to help with breathing, circulation, and general comfort. Advanced models, especially fully electric or ICU beds, also offer height adjustability for easier patient transfers and caregiver ergonomics, as well as specialized positions like Trendelenburg (tilting the entire bed with the head down) and Reverse Trendelenburg.',
+            'Side Rails: These are crucial for preventing falls and provide a support structure for patients when repositioning or getting in and out of bed. They can typically be raised or lowered.',
+            'Lockable Casters/Wheels: The bed is mounted on swivel wheels for mobility, which can be securely locked to ensure stability during patient transfers or medical procedures.',
+            'Emergency Controls: Some advanced electric beds include a CPR release function which can instantly flatten the bed surface in an emergency.',
+            'Mattress Compatibility: Hospital beds use specific mattresses (foam, gel, or air) designed to flex with the beds movements and prevent pressure ulcers (bedsores) in patients who spend extended periods in bed. The covers are often waterproof and easy to clean.'
+          ],
+          specifications: [
+            'Length:	80–84 inches (203–213 cm).',
+            'Width:	36–40 inches (91–102 cm.',
+            'Height:	Adjustable, ~15–30 inches from floor (excluding mattress).',
+            'Frame Material:	Epoxy-coated tubular steel, high-strength metal.'
+          ]
+        },
+        {
+          id: 'examination-table',
+          name: 'Examination Table',
+          category: 'Hospital Furniture',
+          image: '/images/Examination couch.jpeg',
+          description: 'Hospital examination tables are available in various models (manual, hydraulic, or electric) and come with a range of features and specifications designed for patient comfort, safety, and ease of use for medical personnel.',
+          features: [
+            'Adjustable Sections: Most tables are multi-section (usually two or three sections: head, middle, and foot) with adjustable backrests and sometimes leg rests to support various patient positions, from lying flat to a seated position.',
+            'Height Adjustment: Depending on the model, height adjustment can be manual (fixed-height, hand crank), hydraulic (foot pump operated), or electric (motorized with a hand or foot switch) to allow easy patient access and proper working height for the clinician.',
+            'Upholstery & Padding: Upholstery is typically seamless, made of flexible, tear-resistant, antistatic, and flame-retardant imitation leather or vinyl, which is easy to clean with hospital-grade disinfectants. Padding is made of high-density foam for patient comfort.',
+            'Frame & Stability: Frames are typically made of epoxy-coated or chrome-plated tubular steel or stainless steel for stability, robustness, and resistance to corrosion. They often include leveling feet for stability on uneven floors or retractable castors for easy mobility.',
+            'Specialized Functions: Some advanced tables offer specific functions like Trendelenburg and reverse Trendelenburg angles, integrated storage drawers, or are designed for specific uses like bariatric, gynecological, or ultrasound examinations.'
+          ],
+          specifications: [
+            'Dimensions: Overall lengths are typically around 180 cm to 190 cm (approx. 71 to 75 inches), and widths are around 60 cm to 80 cm (approx. 24 to 32 inches).',
+            'Height Range: Adjustable models can range from a low of approximately 46 cm to a high of over 100 cm (approx. 18 to 39 inches), ensuring ergonomic use.',
+            'Weight Capacity: Standard examination tables generally have a safe working load capacity of at least 150 kg to 200 kg (approx. 330 to 440 lbs), while bariatric models can support up to 300 kg (over 660 lbs).'
+          ]
+        }
+      ],
+      theatre: [
+        {
+          id: 'operating-table',
+          name: 'Operating Table',
+          category: 'Theatre Equipment',
+          image: '/images/operating table.jpeg',
+          description: 'Operating tables are crucial surgical equipment with features and specifications designed for versatility, precision, and safety across various procedures. Key characteristics include extensive adjustability, robust construction with specific materials, integrated imaging support, and specialized accessories.',
+          features: [
+            'Adjustability & Positioning: Tables offer a wide range of movements to position the patient correctly for specific surgical sites. This includes height adjustment, lateral tilting (side-to-side), Trendelenburg (head-down) and reverse Trendelenburg (feet-down) positions, and articulation of head, back, and leg sections.',
+            'Imaging Compatibility: Most modern operating tables feature radiolucent (X-ray friendly) tabletops and integrated X-ray cassette channels to allow for intraoperative imaging (fluoroscopy, C-arm, X-rays) without moving the patient.',
+            'Control Systems: Adjustments are typically managed via wired or wireless hand controls, foot pedals, or a backup control panel on the table column. Control systems often include safety features like anti-collision technology, emergency stops, and memory settings for common positions.',
+            'Materials & Hygiene: The base and column covers are often made of high-grade stainless steel for durability, corrosion resistance, and ease of cleaning to maintain a sterile environment.',
+            'Patient Support & Safety: High weight capacities accommodate a diverse patient population, including bariatric patients. Features like secure locking mechanisms, body straps, and padded, anti-static, and waterproof mattresses prevent patient movement, pressure ulcers, and fluid ingress.'
+          ],
+          specifications: [
+            'Patient Weight Capacity:	300 lbs (136 kg) to over 1,200 lbs (544 kg).',
+            'Height Adjustment Range:	Approx. 22" (56 cm) to 45" (114 cm).',
+            'Tabletop Dimensions	Length: approx. 80" (200 cm); Width: approx. 20" (50 cm).',
+            'Longitudinal Slide:	Up to 22" (55.9 cm) total for C-arm access.'
+          ]
+        },
+        {
+          id: 'surgical-light',
+          name: 'Surgical Light',
+          category: 'Theatre Equipment',
+          image: '/images/surgical light.jpeg',
+          description: 'Surgical lights are specialized, high-intensity lighting systems with specific features and technical specifications designed to provide optimal, shadow-free illumination of the surgical site, ensuring visibility and patient safety during procedures.',
+          features: [
+            'Shadow Management: The primary feature is to eliminate shadows caused by the surgeons head, hands, and instruments. This is achieved through multi-bulb light heads, precision reflectors, and advanced technologies like Active Illumination Control (AIC) which automatically boost obstructed LEDs.',
+            'Cool Light Source (Heat Management): Modern surgical lights primarily use LED (Light Emitting Diode) technology to produce a bright, "cold" light with minimal infrared (IR) radiation, preventing tissue dryness and discomfort for the surgical team during long operations.',
+            'Color Rendering Index (CRI): A high CRI value (typically 85 or greater, often 95+) ensures colors appear natural, allowing surgeons to accurately distinguish different tissue types and blood vessels.',
+            'Color Temperature: The light color (measured in Kelvin, K) is often adjustable (e.g., 3,000K to 6,700K) to suit different surgical needs, from warmer tones for soft tissues to cooler tones for enhanced contrast and depth perception.',
+            'Integrated Technology: Optional accessories often include integrated HD or 4K cameras for recording and training, medical display monitors, and seamless integration with hospital systems for image transmission. '
+          ],
+          specifications: [
+            'Maximum Central Illuminance:	40,000 to 160,000 lux at 1m distanc.e',
+            'Color Temperature:	3,000 K – 6,700 K (adjustable in many models).',
+            'Color Rendering Index (CRI) Ra:	Minimum 85 (often 92-98 in LED models).',
+            'Illumination Depth:	Up to 1,200 mm or more without refocusing.'
+          ]
+        },
+         {
+          id: 'anesthesia-machine',
+          name: 'Anesthesia Machine',
+          category: 'Theatre Equipment',
+          image: '/images/anesthesia machine.jpeg',
+          description: 'Anesthesia machines, or workstations, are complex medical devices integrating gas delivery, ventilation, and monitoring systems to safely maintain a patient under anesthesia',
+          features: [
+            'Gas Supply and Control: Machines connect to central hospital pipelines or use backup cylinders for oxygen (\(\text{O}_{2}\)), nitrous oxide (\(\text{N}_{2}\text{O}\)), and medical air. Safety systems like the Pin Index Safety System (PISS) for cylinders and Diameter Index Safety System (DISS) for pipelines prevent misconnection of gases.',
+            'lowmeters and Regulators: Pressure regulators reduce high supply pressures to a safe working pressure. Flowmeters (often digital or traditional rotameters) control the precise flow rates of each gas.',
+            'Vaporizers: These devices are calibrated to deliver a specific, controlled concentration of volatile anesthetic agents (e.g., Sevoflurane, Isoflurane) in vapor form. Modern systems use electronic vaporizers that offer temperature and flow compensation and on-screen control for enhanced precision.',
+            'Breathing Circuit: This system delivers the gas mixture to the patient and removes exhaled carbon dioxide using a \(\text{CO}_{2}\) absorber (soda lime canister) to allow for rebreathing of gases and low-flow anesthesia techniques.',
+            'Scavenging System: This active or passive system collects and removes waste anesthetic gases from the operating room environment.'
+          ],
+          specifications: [
+            'Hypoxic Mixture Prevention: Systems automatically ensure that the inspired oxygen concentration never falls below 21-25%.',
+            'Alarms: A three-level alarm system (visual and audible) alerts clinicians to critical issues like oxygen failure, high/low airway pressure, power failure, apnea, and low/high oxygen concentration.',
+            'Oxygen Flush: A high-flow oxygen flush (25-75 L/min) bypasses the vaporizers to provide pure oxygen in an emergency.',
+            'Battery Backup: Most modern machines include a built-in rechargeable battery to provide emergency power for at least 30-120 minutes during a power outage.'
+          ]
+        },
+         {
+          id: 'electrosurgery-unit',
+          name: 'Electrosurgical Unit',
+          category: 'Theatre Equipment',
+          image: '/images/Electrosurgical unit.jpeg',
+          description: 'Electrosurgery units (ESUs) are sophisticated medical devices that convert electrical energy into high-frequency (HF) current for precise surgical cutting and coagulation of tissue.',
+          features: [
+            'Bipolar: Current flows only between the two tips of a specialized instrument (e.g., forceps) at the surgical site, confining the energy to a small area and eliminating the need for a patient return pad. This is ideal for precise procedures and use with patients who have metal implants or pacemakers.',
+            'Monopolar: Current flows from a small active electrode through the patients body to a large return pad. This mode is used for most general surgical procedures.',
+            'Coagulation (Coag): A pulsed or intermittent current that dries out tissue and seals blood vessels to stop bleeding (hemostasis).',
+            'Patient Return Electrode Monitoring (REM/CQM): Continuously checks the contact quality of the return pad to prevent patient burns.',
+            'Control: Operation is typically managed via a front control panel (sometimes a touchscreen), a handpiece with finger switches, or a dual-pedal footswitch.'
+          ],
+          specifications: [
+            'Operating Frequency: Typically operates in the radio frequency (RF) range of 300 kHz to 5 MHz to prevent neuromuscular stimulation and cardiac interference.',
+            'Accessories: A standard unit comes with various accessories, including an electrosurgical pencil/handle, patient return electrodes/pads, foot switches, and different electrode tips (blade, needle, ball, loop).',
+            'Connectivity: Some advanced units can connect with a smoke evacuation system, argon plasma coagulator, or robotic surgical systems.',
+            'Programmable Settings: Many advanced units allow surgeons to save personal or procedure-specific settings for quick retrieval. '
+          ]
+        },
+         {
+          id: 'endoscopy',
+          name: 'Endoscope',
+          category: 'Theatre Equipment',
+          image: '/images/endoscope.jpeg',
+          description: 'An endoscope is a medical instrument, either flexible or rigid, that uses advanced technology to visually inspect the interior of an organ or body cavity.',
+          features: [
+            'Imaging System: Modern endoscopes feature high-definition (HD) cameras, often using a CCD or CMOS image sensor located at the distal tip. This system transmits images or video to an external monitor, allowing for detailed visualization of internal structures.',
+            'Illumination: Light is essential for visibility inside the body. High-intensity light sources (e.g., Xenon or LED) are located externally and the light is transmitted to the endoscopes tip via a bundle of optical fibers.',
+            'Biopsy/Instrument Channel: Allows the insertion of specialized instruments, such as biopsy forceps, snares, or foreign object retrieval tools, to collect tissue samples or perform therapeutic interventions.',
+            'Air/Water Channel: Features nozzles at the tip to insufflate air (to distend a body cavity for better viewing) and irrigate water (to clean the lens or the area being observed).',
+            'Maneuverability: The control section of a flexible endoscope includes angulation knobs that allow the operator to remotely steer and deflect the tip in different directions (up, down, left, right). This facilitates navigation through complex anatomy. '
+          ],
+          specifications: [
+            'Insertion Tube Diameter:	9–13 mm.',
+            'Magnification: Some endoscopes offer optical or electronic zoom capabilities (up to 136x optical magnification) for close examination of suspicious areas.',
+            'Data Management: Systems often include a video processor, monitor, and workstation with a hard drive for image/video capture, archiving patient data, and generating reports, often with DICOM compatibility.',
+            'Therapeutic Integration: Specialized endoscopes can be combined with other technologies, such as endoscopic ultrasound (EUS) for imaging adjacent organs or electrocautery units for stopping bleeding or removing tissue'
+          ]
+        },
+         {
+          id: 'baby-incubator',
+          name: 'Baby Incubator',
+          category: 'Theatre Equipment',
+          image: '/images/infant incubators.jpeg',
+          description: 'Baby incubators are enclosed medical devices designed to provide a controlled, womb-like environment for premature or ill infants.',
+          features: [
+            'Temperature Control: Microprocessor-based, servo-controlled heating systems maintain a stable environment. They offer dual modes: "Air Mode" to control the incubators internal air temperature and "Skin Mode" to regulate based on the infants body temperature via a skin probe.',
+            'Humidity Control: Integrated systems with water reservoirs or generators add humidity to the air, which is crucial for infants whose skin and respiratory systems are still developing.',
+            'Oxygen Management: An oxygen inlet and optional servo-controlled oxygen system allow for the precise administration of supplemental oxygen, often with a concentration limit to prevent toxicity.',
+            'Safety & Alarms: The incubator is equipped with extensive audible and visual alarms for various anomalies, including high/low temperature, power failure, sensor malfunctions, fan failure, and low battery.',
+            'Design & Accessibility: Features include a transparent, often double-walled canopy for visibility and insulation, multiple hand access ports, and iris ports for tubing. The infant bed typically has an adjustable inclination (Trendelenburg/Reverse Trendelenburg positioning).'
+          ],
+          specifications: [
+            'Temperature Range: Air mode control usually ranges from 28°C to 37°C, with an override function up to 39°C. Skin temperature control ranges from 35°C to 37°C, override to 38°C.',
+            'Noise Level: Internal sound levels during normal operation are typically less than 60 dB to minimize stress on the infant.',
+            'Dimensions/Weight: Varies by model (standard vs. transport), but designed to be space-efficient for NICU environments.',
+            'Power Supply: Typically 110V or 220-240V AC, 50/60 Hz.'
+          ]
+        },
+         {
+          id: 'infusion-pump',
+          name: 'Infusion Pump',
+          category: 'Theatre Equipment',
+          image: '/images/infusion pump.jpeg',
+          description: 'Infusion pumps are medical devices with a core purpose of delivering fluids or medications to a patient in precise, controlled amounts, offering features for various clinical needs and safety specifications to ensure patient well-being.',
+          features: [
+            'Infusion Modes: Pumps offer various modes to meet clinical demands, including ml/h (rate mode), time mode, body weight mode, and patient-controlled analgesia (PCA).',
+            'User Interface: A clear display (often an LCD color touch screen) shows vital information like flow rate, volume limit, and accumulated volume, and many are designed to be user-friendly to reduce errors.',
+            'Portability: Many newer models are lightweight and battery-powered, enabling patient mobility for therapies like home-based pain management or chemotherapy.',
+            'Connectivity: Some advanced pumps are equipped with Wi-Fi or other wireless communication functions, allowing for real-time monitoring and data transfer to a central station or a computer for better management.',
+            'Drug Library: "Smart pumps" often have a built-in, customizable drug library to alert users to potential adverse drug interactions or if parameters are set outside of specified safety limits.'
+          ],
+          specifications: [
+            'Occlusion Detection: Sensors detect blockages in the tubing or catheter and trigger an alarm, often with adjustable pressure trigger levels to prevent a post-occlusion fluid bolus.',
+            'Air-in-Line Detection: Ultrasonic sensors detect air bubbles in the line, preventing air embolisms.',
+            'Low Battery/Power Failure Alarms: Alerts activate when the internal rechargeable battery is low or if AC power is disconnected.',
+            'Infusion Completion/Near Completion Alarms: Notifies healthcare providers when the volume to be infused (VTBI) is nearing completion or finished.'
+          ]
+        },
+         {
+          id: 'ventillator-compressor',
+          name: 'Ventillator With Compressor ',
+          category: 'Theatre Equipment',
+          image: '/images/ventillator compressor.jpeg',
+          description: 'A ventilator with an integrated compressor eliminates the need for an external compressed air source, enhancing its portability and flexibility for use in various clinical settings, including transport, ICUs, and home care.',
+          features: [
+            'Integrated Air Compressor: The primary feature, typically an oil-free piston or turbine system, which draws in ambient air, filters it, and provides a clean, dry, pressurized air source for the patient, independent of a hospitals central gas supply.',
+            'Multiple Ventilation Modes: Supports a wide range of modes for diverse patient needs (adult, pediatric, and sometimes neonatal), such as Volume Control Ventilation (VCV), Pressure Control Ventilation (PCV), Synchronized Intermittent Mandatory Ventilation (SIMV), Continuous Positive Airway Pressure (CPAP), and Bi-Level Positive Airway Pressure (BIPAP).',
+            'User Interface and Monitoring: Features a color TFT LCD touchscreen (e.g., 10.4", 12.1", 15") for easy monitoring of parameters like tidal volume, respiratory rate, airway pressure, and oxygen concentration.',
+            'Portability and Power: Designed to be compact and often includes an integrated battery for extended operation during transport or power outages, with some models offering run times of several hours on a fully charged battery.',
+            'Safety Alarms: Incorporates comprehensive audible and visual alarms for critical parameters, including high/low airway pressure, high/low oxygen concentration, apnea, and power failure.'
+          ],
+          specifications: [
+            'Tidal Volume Range: typically 20-2000 mL for adult/pediatric use.',
+            'Respiratory Rate Range: commonly 1-100 bpm.',
+            'Oxygen Concentration (FiO2): adjustable from 21% (ambient air) to 100%.',
+            'Power: typically AC power (e.g., 100-240V, 50/60 Hz) with a built-in rechargeable battery (e.g., lead-acid or Li-ion).'
+          ]
+        },
+         {
+          id: 'surgial-suction',
+          name: 'Surgical Suction',
+          category: 'Theatre Equipment',
+          image: '/images/suction machine.jpeg',
+          description: 'Surgical suction units are essential medical devices that use a vacuum to remove fluids during procedures. Key features and specifications help ensure efficient, safe, and quiet operation in various medical settings.',
+          features: [
+            'Adjustable Vacuum Control: Allows medical professionals to regulate the suction strength (pressure) as needed for different surgical applications and patient safety.',
+            'Collection Canister/Jar System: Collects the aspirated fluids. These are often transparent, autoclavable (reusable), or disposable, and come in various capacities (e.g., 1L, 2.5L, 3L, 5L).',
+            'Safety/Overflow Protection: A critical mechanism (often a float system and hydrophobic filter) that automatically stops suction if the collection container is full, preventing fluid from damaging the pump or causing contamination.',
+            'Filtration System: Includes hydrophobic bacterial and viral filters that prevent contaminants from entering the pump mechanism and protect the environment and staff from cross-contamination.',
+            'Mobility & Design: Units can be portable (lightweight with carrying handles) or mobile (mounted on a stable trolley with anti-static wheels, often with brakes) for easy transport between rooms.'
+          ],
+          specifications: [
+            'Max. Vacuum: Strength	-0.75 BAR (~560 mmHg) up to -0.98 BAR (~735 mmHg).',
+            'Flow Rate (Suction Capacity): 15 L/min for minor uses, 40-60 L/min for surgical uses.',
+            'Noise Level:	Typically between 39 dB(A) and 65 dB(A).',
+            'Operating Mode:	Often rated for short intermittent use (e.g., 20 min ON/40 min OFF for portable units) or continuous operation for high-end surgical models.'
+          ]
+        },
+         {
+          id: 'defibrillator',
+          name: 'Defibrillator',
+          category: 'Theatre Equipment',
+          image: '/images/Defibrillator.jpeg',
+          description: 'Modern defibrillators feature biphasic waveforms and voice prompts and typically have specifications related to energy output (Joules), battery life, and durability (IP rating). Specific features and specifications can vary significantly depending on the type of defibrillator and its intended user.',
+          features: [
+            'Pediatric Capability: Many defibrillators feature a child mode (via a button or specific pads) that attenuates the energy level for safe use on children.',
+            'CPR Feedback: Many models include real-time CPR coaching, providing feedback on the depth and rate of chest compressions (e.g., "Push Harder").',
+            'Automatic Analysis: AEDs automatically analyze the patients heart rhythm to determine if a shock is necessary, eliminating the need for user interpretation.',
+            'User Guidance: Automated External Defibrillators (AEDs), designed for lay rescuers, provide clear voice and visual prompts to guide the user step-by-step through the rescue process and CPR.',
+            'Waveform Technology: Most modern devices use a biphasic waveform, which delivers current in two phases and requires less energy to be effective, reducing potential damage to the heart muscle compared to older monophasic technology.'
+          ],
+          specifications: [
+            'Energy Output:	Adult: Typically 150J to 200J (biphasic), with some manual units reaching 360J. Pediatric: Often fixed at 50J or adjustable between 30J-70J.',
+            'Charging Time:	Generally less than 10 seconds to reach maximum energy output.',
+            'Battery Life:	Standby life: Varies widely, but typically 4-5 years for non-rechargeable batteries once installed. Capacity: Able to provide 100 to 200 discharges at maximum energy.',
+            'Weight & Dimensions:	Portable AEDs are typically lightweight, around 1.5kg to 3kg, with compact dimensions for easy transport.'
+          ]
+        },
+         {
+          id: 'patient-monitor',
+          name: 'Patient Monitor',
+          category: 'Theatre Equipment',
+          image: '/images/Patient Monitor.jpeg',
+          description: 'Patient monitors feature core vital sign monitoring capabilities and technical specifications designed for reliability, accuracy, and ease of use in clinical settings. Key aspects include measurable parameters, display capabilities, and connectivity.',
+          features: [
+            'Electrocardiogram (ECG) & Heart Rate (HR): Measures the electrical activity of the heart and heart rate (e.g., 15-300 bpm for adults), aiding in arrhythmia and S-T segment analysis.',
+            'Non-Invasive Blood Pressure (NIBP): Automatically measures systolic, diastolic, and mean arterial pressure using an inflatable cuff (e.g., adult range 10-270 mmHg).',
+            'Invasive Blood Pressure (IBP) (Optional): Provides continuous, real-time blood pressure measurement through an arterial catheter, typically in critical care.',
+            'Display: High-resolution color screens (often 10-12 inches or larger) with multi-waveform displays (up to 7 or more simultaneously) and large-font options for visibility from a distance. Many modern monitors feature touchscreen interfaces.',
+            'Temperature (Temp): Monitors body temperature using skin or core temperature probes (e.g., range 0-50°C).'
+          ],
+          specifications: [
+            'Connectivity: Features like LAN, Wi-Fi, and USB interfaces enable data sharing, central monitoring, and connection to external printers.',
+            'Patient Compatibility: Suitable for use with adult, pediatric, and neonatal patients, with corresponding accessories and measurement ranges.',
+            'Portability & Power: Built-in rechargeable batteries for portability and uninterrupted monitoring during power failures or patient transport (typically >2 hours of autonomy).',
+            'Data Management: Large internal data storage capacity for tabular and graphic trends (e.g., 72-160 hours or more), which can often be offloaded via USB or network for integration with Electronic Health Record (EHR) systems.'
+          ]
+        },
+         {
+          id: 'syringe-pump',
+          name: 'Syringe Pump',
+          category: 'Theatre Equipment',
+          image: '/images/MD910.jpeg',
+          description: 'Syringe pumps deliver fluids with high precision by using a motorized plunger to control the flow rate. Key features often focus on safety and programmability, while specifications vary by application, ranging from medical to research uses.',
+          features: [
+            'Programmable Settings: Allows users to set precise flow rates, infusion volumes, and time, with some models automatically calculating one parameter based on the other two.',
+            'Comprehensive Alarm Systems: Essential safety feature including audio-visual alerts for issues such as occlusion (blockage), near end of infusion, low battery, AC power failure, or incorrect syringe loading.',
+            'Automatic Syringe Detection: The pump can automatically recognize the size and brand of the inserted syringe (e.g., 5mL, 10mL, 20mL, 50mL/60mL) to ensure proper and safe operation.',
+            'Anti-Bolus System: A feature to reduce pressure build-up and prevent a sudden surge of fluid into the patients line when an occlusion is cleared.',
+            'Keep Vein Open (KVO) Function: After the main infusion is complete, the pump can automatically switch to a very low flow rate (e.g., 0.1-1.0 ml/hr) to prevent the IV line from clotting or a complete stop of fluid flow.'
+          ],
+          specifications: [
+            'Flow Rate:	0.1 to 1200 ml/hr (dependent on syringe size).',
+            'Syringe Compatibility:	5mL, 10mL, 20mL, 30mL, 50mL/60mL standard brands.',
+            'Occlusion Pressure:	Selectable trigger levels (e.g., 300/500/900 mmHg or 10-17 PSI).',
+            'Safety Certifications:	ISO 13485, European CE, or US FDA approval.'
+          ]
+        }
+      ]
+    };
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCategories();
+      loadAllProducts();
+      setupMobileMenu();
+    });
+
+    // Mobile menu functionality
+    function setupMobileMenu() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Animate hamburger to X
+        const spans = menuToggle.querySelectorAll('span');
+        if (navLinks.classList.contains('active')) {
+          spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+        } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      const navItems = document.querySelectorAll('#nav-links a');
+      navItems.forEach(item => {
+        item.addEventListener('click', function() {
+          navLinks.classList.remove('active');
+          const spans = menuToggle.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        });
+      });
+    }
+
+    // Load categories
+    function loadCategories() {
+      const categoriesGrid = document.getElementById('categoriesGrid');
+      categoriesGrid.innerHTML = categories.map(category => `
+        <div class="category-card" onclick="showCategory('${category.id}')">
+          <div class="category-image">
+            <img src="${category.image}" alt="${category.name}" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22380%22 height%3D%22220%22 viewBox%3D%220 0 380 220%22%3E%3Crect width%3D%22380%22 height%3D%22220%22 fill%3D%22%23f8f9fa%22%2F%3E%3Ctext x%3D%22190%22 y%3D%22120%22 font-family%3D%22Arial%22 font-size%3D%2216%22 text-anchor%3D%22middle%22 fill%3D%22%23666%22%3EImage Coming Soon%3C%2Ftext%3E%3C%2Fsvg%3E'">
+          </div>
+          <div class="category-content">
+            <h3>${category.name}</h3>
+            <p>${category.description}</p>
+            <div class="category-features">
+              <ul>
+                ${category.features.map(feature => `<li>${feature}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="category-stats">
+              <span>${category.productCount} Products</span>
+              <span>Click to view</span>
+            </div>
+            <button class="view-category-btn">View Category</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load all products into their respective sections
+    function loadAllProducts() {
+      Object.keys(products).forEach(categoryId => {
+        const grid = document.getElementById(`${categoryId}Grid`);
+        if (grid) {
+          grid.innerHTML = products[categoryId].map(product => `
+            <div class="product-card" onclick="viewProduct('${categoryId}', '${product.id}')">
+              <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22180%22 viewBox%3D%220 0 300 180%22%3E%3Crect width%3D%22300%22 height%3D%22180%22 fill%3D%22%23f8f9fa%22%2F%3E%3Ctext x%3D%22150%22 y%3D%22100%22 font-family%3D%22Arial%22 font-size%3D%2214%22 text-anchor%3D%22middle%22 fill%3D%22%23666%22%3EProduct Image%3C%2Ftext%3E%3C%2Fsvg%3E'">
+              <h4>${product.name}</h4>
+              <button class="view-product-btn">View Details</button>
+            </div>
+          `).join('');
+        }
+      });
+    }
+
+    // Show categories section
+    function showCategories() {
+      document.getElementById('categories-section').style.display = 'block';
+      document.querySelectorAll('.products-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Update breadcrumb
+      updateBreadcrumb('Products');
+      
+      // Scroll to top
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Show specific category
+    function showCategory(categoryId) {
+      document.getElementById('categories-section').style.display = 'none';
+      document.querySelectorAll('.products-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      const categorySection = document.getElementById(`${categoryId}-products`);
+      if (categorySection) {
+        categorySection.classList.add('active');
+      }
+      
+      // Update breadcrumb
+      const category = categories.find(cat => cat.id === categoryId);
+      if (category) {
+        updateBreadcrumb('Products', category.name);
+      }
+      
+      // Scroll to top
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Update breadcrumb
+    function updateBreadcrumb(...items) {
+      const breadcrumb = document.querySelector('.breadcrumb .container');
+      let html = '<a href="index.html">Home</a>';
+      
+      items.forEach((item, index) => {
+        html += '<span>></span>';
+        if (index === items.length - 1) {
+          html += `<span>${item}</span>`;
+        } else {
+          html += `<a href="#" onclick="showCategories()">${item}</a>`;
+        }
+      });
+      
+      breadcrumb.innerHTML = html;
+    }
+
+    // View product details
+    function viewProduct(categoryId, productId) {
+      const categoryProducts = products[categoryId];
+      const product = categoryProducts.find(p => p.id === productId);
+      
+      if (!product) return;
+      
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = `
+        <div class="modal-image">
+          <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22400%22 height%3D%22300%22 viewBox%3D%220 0 400 300%22%3E%3Crect width%3D%22400%22 height%3D%22300%22 fill%3D%22%23f8f9fa%22%2F%3E%3Ctext x%3D%22200%22 y%3D%22160%22 font-family%3D%22Arial%22 font-size%3D%2216%22 text-anchor%3D%22middle%22 fill%3D%22%23666%22%3EProduct Image Coming Soon%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        </div>
+        <div class="modal-details">
+          <h2>${product.name}</h2>
+          <div class="product-category">${product.category}</div>
+          <p>${product.description}</p>
+          
+          <h3>Key Features</h3>
+          <ul>
+            ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+          </ul>
+          
+          <h3>Specifications</h3>
+          <ul>
+            ${product.specifications.map(spec => `<li>${spec}</li>`).join('')}
+          </ul>
+          
+          <div class="modal-actions">
+            <button class="modal-btn inquiry-btn" onclick="inquireAboutProduct('${product.name}')">
+              <span>📧</span> Request Information
+            </button>
+            <button class="modal-btn quote-btn" onclick="requestQuote('${product.name}')">
+              <span>💰</span> Get Quote
+            </button>
+            <button class="modal-btn close-btn" onclick="closeModal()">
+              <span>✕</span> Close
+            </button>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('productModal').style.display = 'block';
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('productModal').style.display = 'none';
+    }
+
+    // Inquire about product
+    function inquireAboutProduct(productName) {
+      const message = `Hello, I'm interested in learning more about your ${productName}. Please provide more information.`;
+      const whatsappUrl = `https://wa.me/254110090572?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Request quote
+    function requestQuote(productName) {
+      const message = `Hello, I would like to request a quote for ${productName}. Please provide pricing and availability.`;
+      const whatsappUrl = `https://wa.me/254110090572?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('productModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+  const categoryId = params.get("category");
+
+  if (categoryId) {
+    window.addEventListener("DOMContentLoaded", () => {
+      showCategory(categoryId);
+    });
+  }
+  </script>
+</body>
+</html>
